@@ -21,13 +21,13 @@ import { Page } from '@/components/Page.tsx';
 // };
 
 export const handler = async (_req: Request, ctx: HandlerContext): Response => {
-  // const body = await (
-  //   await import('../blog/fresh 로 개발 블로그 구현기2.jsx')
-  // ).default;
+  const body = await (
+    await import('../mdx/posts/fresh 로 개발 블로그 구현기.jsx')
+  ).default;
   // const body = await Deno.readTextFile(
   //   './posts/fresh 로 개발 블로그 구현기2.jsx'
   // );
-  // return ctx.render({ body });
+  return ctx.render({ body });
 };
 
 const st = {
@@ -35,8 +35,8 @@ const st = {
 };
 
 export default function Home(props: PageProps) {
-  // const { body } = props.data;
-  // const Test = body;
+  const { body } = props.data;
+  const Test = body;
 
   return (
     <div>
@@ -50,7 +50,7 @@ export default function Home(props: PageProps) {
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>
       <Counter start={3}></Counter>
-      {/* <Test></Test> */}
+      <Test></Test>
       <Page></Page>
     </div>
   );

@@ -1,6 +1,6 @@
 /*@jsxRuntime automatic @jsxImportSource preact*/
 import {jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
-export const test = 'aaaa';
+export const test = 'Tes 이곳은 블로그';
 function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
   return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
