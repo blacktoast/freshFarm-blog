@@ -5,7 +5,8 @@ import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';
 import { Page } from '@/components/Page.tsx';
-
+import { compile, run } from 'mdx2';
+import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
@@ -24,9 +25,15 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
   // const body = (await import('../mdx/posts/a.jsx')).default;
   // console.log(body);
 
-  const body = await Deno.readTextFile(
+  const mdx = await Deno.readTextFile(
     './blog/posts/fresh 로 개발 블로그 구현기.mdx'
   );
+  const mdx2 = await compile(mdx, {
+    outputFormat: 'function-body',
+    jsxImportSource: 'preact',
+  });
+  const body = await run(mdx2, jsxP);
+  console.log(body);
   return ctx.render({ body });
 };
 
@@ -36,8 +43,8 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
 
 export default function Home(props: PageProps) {
   const { body } = props.data;
-  const Test = body;
-  console.log(body);
+  const Test = body.default;
+  console.log(Test);
 
   return (
     <div>
@@ -51,6 +58,7 @@ export default function Home(props: PageProps) {
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>
       <Counter start={3}></Counter>
+      <Test></Test>
       <Page></Page>
     </div>
   );
