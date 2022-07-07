@@ -6,7 +6,7 @@ import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';
 import { Page } from '@/components/Page.tsx';
 
-// import AA from '@/mdx/posts/a.jsx';
+import AA from '@/mdx/posts/a.jsx';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
@@ -20,21 +20,19 @@ import { Page } from '@/components/Page.tsx';
 //   },
 // };
 
-export const handler = async (_req: Request, ctx: HandlerContext): Response => {
-  const body = (await import('@/mdx/posts/a.jsx')).default;
-  // const body = await Deno.readTextFile(
-  //   './posts/fresh 로 개발 블로그 구현기2.jsx'
-  // );
-  return ctx.render({ body });
-};
+// export const handler = async (_req: Request, ctx: HandlerContext): Response => {
+//   const body = (await import('@/mdx/posts/a.jsx')).default;
+//   // const body = await Deno.readTextFile(
+//   //   './posts/fresh 로 개발 블로그 구현기2.jsx'
+//   // );
+//   return ctx.render({ body });
+// };
 
 // const st = {
 //   backgroundColor: 'red',
 // };
 
 export default function Home(props: PageProps) {
-  const { body } = props.data;
-  const Test = body;
   return (
     <div>
       <Head>
@@ -47,8 +45,8 @@ export default function Home(props: PageProps) {
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>
       <Counter start={3}></Counter>
-      <Test></Test>
       <Page></Page>
+      <AA></AA>
     </div>
   );
 }
