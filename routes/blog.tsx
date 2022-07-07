@@ -33,9 +33,6 @@ const st = {
 };
 
 export default function Home(props: PageProps) {
-  const { body } = props.data;
-  const Test = body;
-
   return (
     <div>
       <Head>
