@@ -8,11 +8,10 @@ function MDXContent(props = {}) {
   })) : _createMdxContent();
   function _createMdxContent() {
     const _components = Object.assign({
-      p: "p",
-      br: "br"
+      p: "p"
     }, props.components);
     return _jsxs(_components.p, {
-      children: [test, " hi", _jsx(_components.br, {}), "\n", "test"]
+      children: [test, " hi"]
     });
   }
 }
