@@ -21,7 +21,7 @@ export default function Home() {
   console.log();
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
-      <h1>test</h1>
+      <h1>tesaat</h1>
       <img
         src="/logo.svg"
         height="100px"
