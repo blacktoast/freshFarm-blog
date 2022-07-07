@@ -21,12 +21,12 @@ import { Page } from '@/components/Page.tsx';
 
 export const handler = async (_req: Request, ctx: HandlerContext): Response => {
   // const body = 'aa';
-  const body = (await import('../mdx/posts/a.jsx')).default;
-  console.log(body);
+  // const body = (await import('../mdx/posts/a.jsx')).default;
+  // console.log(body);
 
-  // const body = await Deno.readTextFile(
-  //   './posts/fresh 로 개발 블로그 구현기2.jsx'
-  // );
+  const body = await Deno.readTextFile(
+    './blog/posts/fresh 로 개발 블로그 구현기.mdx'
+  );
   return ctx.render({ body });
 };
 
