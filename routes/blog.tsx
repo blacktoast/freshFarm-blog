@@ -5,7 +5,7 @@ import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';
 import { Page } from '@/components/Page.tsx';
-import AA from '@/mdx/posts/fresh 로 개발 블로그 구현기.jsx';
+import AA from '@/mdx/posts/a.jsx';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
