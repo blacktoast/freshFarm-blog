@@ -21,9 +21,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      DENO_KEY : ${{ screts.DENO_KEY  }}
+      DENO_KEY : ${{ secrets.DENO_KEY  }}
     permissions:
-      id-token: write # This is required to allow the GitHub Action to authenticate with Deno Deploy.
+      id-token: DENO_KEY # This is required to allow the GitHub Action to authenticate with Deno Deploy.
       contents: read
     steps:
       - name: test
