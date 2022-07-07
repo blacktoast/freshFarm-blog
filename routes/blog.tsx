@@ -46,7 +46,7 @@ export default function Home(props: PageProps) {
       </Head> */}
       <Counter start={3}></Counter>
       {/* <Test></Test> */}
-      {/* <Page></Page> */}
+      <Page></Page>
     </div>
   );
 }
