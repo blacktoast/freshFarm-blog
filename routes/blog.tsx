@@ -24,13 +24,16 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
   // const body = 'aa';
   // const body = (await import('../mdx/posts/a.jsx')).default;
   // console.log(body);
-
-  const mdx = await Deno.readTextFile('./blog/posts/a.mdx');
-  const mdx2 = await compile(mdx, {
-    outputFormat: 'function-body',
-    jsxImportSource: 'preact',
-  });
-  const body = await run(mdx2, jsxP);
+  const body = 'aa';
+  for await (const dirEntry of Deno.readDir('./')) {
+    console.log(dirEntry);
+  }
+  // const mdx = await Deno.readTextFile('./blog/posts/a.mdx');
+  // const mdx2 = await compile(mdx, {
+  //   outputFormat: 'function-body',
+  //   jsxImportSource: 'preact',
+  // });
+  // const body = await run(mdx2, jsxP);
   console.log(body);
   return ctx.render({ body });
 };
@@ -40,9 +43,9 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
 // };
 
 export default function Home(props: PageProps) {
-  const { body } = props.data;
-  const Test = body.default;
-  console.log(Test);
+  // const { body } = props.data;
+  // const Test = body.default;
+  // console.log(Test);
 
   return (
     <div>
@@ -56,7 +59,7 @@ export default function Home(props: PageProps) {
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>
       <Counter start={3}></Counter>
-      <Test></Test>
+      {/* <Test></Test> */}
       <Page></Page>
     </div>
   );
