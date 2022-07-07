@@ -38,4 +38,4 @@ jobs:
      
 
       - name: Run 
-        run: deno run -A --watch=static/,routes/ dev.ts
+        run: deno run -A main.ts
