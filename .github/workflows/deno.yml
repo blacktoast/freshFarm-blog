@@ -19,10 +19,16 @@ permissions:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
+    env:
+      DENO_KEY : ${{ secrets.DENO_KEY  }}
     permissions:
-      id-token: ddp_AQiy1qhGiSGR4OwfaDsYSwhhwioVl309oLQJ # This is required to allow the GitHub Action to authenticate with Deno Deploy.
+      id-token: write # This is required to allow the GitHub Action to authenticate with Deno Deploy.
       contents: read
     steps:
+      - name: test
+        run: echo $DENO_KEY
+        
       - name: Clone repository
         uses: actions/checkout@v3
 
@@ -31,3 +37,4 @@ jobs:
         with:
           project: blog1444 # the name of the project on Deno Deploy
           entrypoint: main.ts # the entrypoint to deploy
+          import-map: import_map.json
