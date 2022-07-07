@@ -19,6 +19,7 @@ permissions:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     permissions:
       id-token: ddp_AQiy1qhGiSGR4OwfaDsYSwhhwioVl309oLQJ # This is required to allow the GitHub Action to authenticate with Deno Deploy.
       contents: read
