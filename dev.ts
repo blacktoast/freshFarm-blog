@@ -7,7 +7,6 @@ import {
   encode as utf8Encode,
 } from 'https://deno.land/std@0.82.0/encoding/utf8.ts';
 import * as mod from 'https://deno.land/std@0.140.0/hash/md5.ts';
-import { createHash } from 'https://deno.land/std/hash/mod.ts';
 
 const dirs = ['posts', 'notes'];
 
@@ -18,9 +17,7 @@ dirs.map(async (dir) => {
     console.log('aa    ', dirEntry.name.split('.')[0]);
     const compiled = await compile(body, { jsxImportSource: 'preact' });
     await Deno.writeTextFile(
-      `./mdx/${dir}/${mod
-        .createHash('md5')
-        .update(utf8Encode(dirEntry.name.split('.')[0]))}.jsx`,
+      `./mdx/${dir}/${dirEntry.name.split('.')[0]}.jsx`,
       compiled
     );
   }
