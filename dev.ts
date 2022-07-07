@@ -2,11 +2,11 @@
 
 import dev from '$fresh/dev.ts';
 import { compile } from 'mdx2';
-import {
-  decode as utf8Decode,
-  encode as utf8Encode,
-} from 'https://deno.land/std@0.82.0/encoding/utf8.ts';
-import * as mod from 'https://deno.land/std@0.140.0/hash/md5.ts';
+// import {
+//   decode as utf8Decode,
+//   encode as utf8Encode,
+// } from 'https://deno.land/std@0.82.0/encoding/utf8.ts';
+// import * as mod from 'https://deno.land/std@0.140.0/hash/md5.ts';
 
 const dirs = ['posts', 'notes'];
 
