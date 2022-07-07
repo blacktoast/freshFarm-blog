@@ -20,8 +20,8 @@ import { Page } from '@/components/Page.tsx';
 // };
 
 export const handler = async (_req: Request, ctx: HandlerContext): Response => {
-  // const body = 'aa';
-  const body = (await import('./mdx/posts/a.jsx')).default;
+  const body = 'aa';
+  // const body = (await import('../mdx/posts/a.jsx')).default;
   console.log(body);
 
   // const body = await Deno.readTextFile(
