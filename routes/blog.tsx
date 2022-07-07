@@ -20,8 +20,12 @@ import { Page } from '@/components/Page.tsx';
 // };
 
 export const handler = async (_req: Request, ctx: HandlerContext): Response => {
-  const body = (await import('@/mdx/posts/a.jsx')).default;
-  console.log(body);
+  const body = 'aa';
+  // const body = (await import('./mdx/posts/a.jsx')).default;
+  // console.log(body);
+  for await (const dirEntry of Deno.readDir('./')) {
+    console.log(dirEntry);
+  }
   // const body = await Deno.readTextFile(
   //   './posts/fresh 로 개발 블로그 구현기2.jsx'
   // );
