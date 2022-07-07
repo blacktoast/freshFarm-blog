@@ -35,7 +35,7 @@ import { Page } from '@/components/Page.tsx';
 export default function Home(props: PageProps) {
   return (
     <div>
-      {/* <Head>
+      <Head>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css"
@@ -43,7 +43,7 @@ export default function Home(props: PageProps) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <link rel="stylesheet" href="/post.css"></link>
         <script>hljs.initHighlightingOnLoad();</script>
-      </Head> */}
+      </Head>
       <Counter start={3}></Counter>
       {/* <Test></Test> */}
       <Page></Page>
