@@ -21,6 +21,7 @@ import { Page } from '@/components/Page.tsx';
 
 export const handler = async (_req: Request, ctx: HandlerContext): Response => {
   const body = (await import('@/mdx/posts/a.jsx')).default;
+  console.log(body);
   // const body = await Deno.readTextFile(
   //   './posts/fresh 로 개발 블로그 구현기2.jsx'
   // );
@@ -34,6 +35,7 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
 export default function Home(props: PageProps) {
   const { body } = props.data;
   const Test = body;
+  console.log(body);
 
   return (
     <div>
