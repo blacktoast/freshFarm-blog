@@ -4,9 +4,8 @@ import { tw } from '@twind';
 import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';
-
 import { Page } from '@/components/Page.tsx';
-
+import AA from '@/mdx/posts/fresh 로 개발 블로그 구현기.jsx';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
@@ -51,6 +50,7 @@ export default function Home(props: PageProps) {
       </Head>
       <Counter start={3}></Counter>
       {/* <Test></Test> */}
+      <AA></AA>
       <Page></Page>
     </div>
   );
