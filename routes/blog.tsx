@@ -5,7 +5,8 @@ import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';
 import { Page } from '@/components/Page.tsx';
-import AA from '@/mdx/posts/a.jsx';
+
+// import AA from '@/mdx/posts/a.jsx';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
@@ -20,9 +21,7 @@ import AA from '@/mdx/posts/a.jsx';
 // };
 
 export const handler = async (_req: Request, ctx: HandlerContext): Response => {
-  const body = 'test';
-  // const body = (await import('../mdx/posts/fresh 로 개발 블로그 구현기.jsx'))
-  //   .default;
+  const body = (await import('../mdx/posts/a.jsx')).default;
   // const body = await Deno.readTextFile(
   //   './posts/fresh 로 개발 블로그 구현기2.jsx'
   // );
@@ -49,8 +48,7 @@ export default function Home(props: PageProps) {
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>
       <Counter start={3}></Counter>
-      {/* <Test></Test> */}
-      <AA></AA>
+      <Test></Test>
       <Page></Page>
     </div>
   );
