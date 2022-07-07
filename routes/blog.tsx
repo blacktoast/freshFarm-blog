@@ -48,7 +48,7 @@ export default function Home(props: PageProps) {
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>
       <Counter start={3}></Counter>
-      <Test></Test>
+      {/* <Test></Test> */}
       <Page></Page>
     </div>
   );
