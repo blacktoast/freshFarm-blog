@@ -25,7 +25,7 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
   // const body = (await import('../mdx/posts/a.jsx')).default;
   // console.log(body);
   const body = 'aa';
-  for await (const dirEntry of Deno.readDir('./')) {
+  for await (const dirEntry of Deno.readDir('./blog')) {
     console.log(dirEntry);
   }
   // const mdx = await Deno.readTextFile('./blog/posts/a.mdx');
