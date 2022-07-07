@@ -25,9 +25,7 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
   // const body = (await import('../mdx/posts/a.jsx')).default;
   // console.log(body);
 
-  const mdx = await Deno.readTextFile(
-    './blog/posts/fresh 로 개발 블로그 구현기.mdx'
-  );
+  const mdx = await Deno.readTextFile('./blog/posts/a.mdx');
   const mdx2 = await compile(mdx, {
     outputFormat: 'function-body',
     jsxImportSource: 'preact',
