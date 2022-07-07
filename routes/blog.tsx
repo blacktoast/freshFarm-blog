@@ -24,16 +24,16 @@ export const handler = async (_req: Request, ctx: HandlerContext): Response => {
   // const body = 'aa';
   // const body = (await import('../mdx/posts/a.jsx')).default;
   // console.log(body);
-  const body = 'aa';
-  for await (const dirEntry of Deno.readDir('./blog/posts')) {
-    console.log(dirEntry);
-  }
-  // const mdx = await Deno.readTextFile('./blog/posts/a.mdx');
-  // const mdx2 = await compile(mdx, {
-  //   outputFormat: 'function-body',
-  //   jsxImportSource: 'preact',
-  // });
-  // const body = await run(mdx2, jsxP);
+  // const body = 'aa';
+  // for await (const dirEntry of Deno.readDir('./blog/posts')) {
+  //   console.log(dirEntry);
+  // }
+  const mdx = await Deno.readTextFile('./blog/posts/a.mdx');
+  const mdx2 = await compile(mdx, {
+    outputFormat: 'function-body',
+    jsxImportSource: 'preact',
+  });
+  const body = await run(mdx2, jsxP);
   console.log(body);
   return ctx.render({ body });
 };
