@@ -5,8 +5,9 @@ import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';
 import { Page } from '@/components/Page.tsx';
+import { Input } from '@/components/Input.tsx';
 import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
-import Test from './posts/a.jsx';
+// import Test from './blog/posts/441cc0b987b838abe17cd5d51e89198f.jsx';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
