@@ -10,6 +10,7 @@ import {
 } from 'https://deno.land/std@0.147.0/encoding/base64.ts';
 
 export const buildMdx = () => {
+  console.log('object');
   const dirs = ['posts', 'notes'];
   //먼자 한글파일부터 되는지 보자
   dirs.map(async (dir) => {
@@ -28,7 +29,6 @@ export const buildMdx = () => {
       );
     }
   });
-  console.log('object');
 };
 
 buildMdx();

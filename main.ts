@@ -1,3 +1,4 @@
+import { buildMdx } from './build.ts';
 /// <reference no-default-lib="true" />
 /// <reference lib="dom" />
 /// <reference lib="dom.asynciterable" />
@@ -13,6 +14,7 @@ import { virtualSheet } from 'twind/sheets';
 const sheet = virtualSheet();
 sheet.reset();
 setup({ ...config, sheet });
+buildMdx();
 
 function render(ctx: RenderContext, render: InnerRenderFunction) {
   const snapshot = ctx.state.get('twind') as unknown[] | null;
