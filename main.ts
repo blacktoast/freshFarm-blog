@@ -24,5 +24,4 @@ function render(ctx: RenderContext, render: InnerRenderFunction) {
   const newSnapshot = sheet.reset();
   ctx.state.set('twind', newSnapshot);
 }
-
 await start(manifest, { render });

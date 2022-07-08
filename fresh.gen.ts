@@ -4,9 +4,14 @@
 
 import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/api/joke.ts";
-import * as $2 from "./routes/blog.tsx";
-import * as $3 from "./routes/index.tsx";
-import * as $4 from "./routes/test.ts";
+import * as $2 from "./routes/api/test.ts";
+import * as $3 from "./routes/blog.tsx";
+import * as $4 from "./routes/index.tsx";
+import * as $5 from "./routes/notes/test.jsx";
+import * as $6 from "./routes/posts/%ED%95%98%EC%9D%B4_%ED%95%98%EC%9D%B4.jsx";
+import * as $7 from "./routes/posts/a.jsx";
+import * as $8 from "./routes/posts/fresh_%EB%A1%9C_%EA%B0%9C%EB%B0%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%EA%B5%AC%ED%98%84%EA%B8%B0.jsx";
+import * as $9 from "./routes/test.ts";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/Todo.tsx";
 
@@ -14,9 +19,15 @@ const manifest = {
   routes: {
     "./routes/[name].tsx": $0,
     "./routes/api/joke.ts": $1,
-    "./routes/blog.tsx": $2,
-    "./routes/index.tsx": $3,
-    "./routes/test.ts": $4,
+    "./routes/api/test.ts": $2,
+    "./routes/blog.tsx": $3,
+    "./routes/index.tsx": $4,
+    "./routes/notes/test.jsx": $5,
+    "./routes/posts/%ED%95%98%EC%9D%B4_%ED%95%98%EC%9D%B4.jsx": $6,
+    "./routes/posts/a.jsx": $7,
+    "./routes/posts/fresh_%EB%A1%9C_%EA%B0%9C%EB%B0%9C_%EB%B8%94%EB%A1%9C%EA%B7%B8_%EA%B5%AC%ED%98%84%EA%B8%B0.jsx":
+      $8,
+    "./routes/test.ts": $9,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
