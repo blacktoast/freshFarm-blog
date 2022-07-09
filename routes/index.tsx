@@ -3,7 +3,8 @@ import { h } from 'preact';
 import { tw } from '@twind';
 import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
-
+import Input from '@/islands/Input.tsx';
+import { useState } from 'preact/hooks';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
@@ -18,20 +19,15 @@ import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 // };
 
 export default function Home() {
-  console.log();
+  const [st, setState] = useState('');
+  const change = (e: any) => {
+    console.log(e);
+  };
+  const [count, setCount] = useState(0);
+
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
-      <h1>tesaat</h1>
-      <img
-        src="/logo.svg"
-        height="100px"
-        alt="the fresh logo: a sliced lemon dripping with juice"
-      />
-      <p class={tw`my-6`}>
-        Welcome to `fresh`. ay update this message in the ./routes/index.tsx
-        file, and refresh.
-      </p>
-      <Counter start={3} />
+      <Input></Input>
     </div>
   );
 }

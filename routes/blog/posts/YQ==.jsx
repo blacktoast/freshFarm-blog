@@ -10,7 +10,7 @@ function MDXContent(props = {}) {
       p: "p"
     }, props.components);
     return _jsx(_components.p, {
-      children: "가볼까??"
+      children: "가볼까??\n가보자고\n가본다고?\naaa"
     });
   }
 }

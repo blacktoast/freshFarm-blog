@@ -10,7 +10,7 @@ function MDXContent(props = {}) {
       p: "p"
     }, props.components);
     return _jsx(_components.p, {
-      children: "이곳은 비비"
+      children: "이곳은 비비\n비비"
     });
   }
 }
