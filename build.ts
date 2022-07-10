@@ -9,6 +9,8 @@ import {
   encode,
 } from 'https://deno.land/std@0.147.0/encoding/base64.ts';
 
+import * as gfm from 'https://esm.sh/remark-gfm@3.0.1';
+
 export const buildMdx = () => {
   console.log('object');
   const dirs = ['posts', 'notes'];
@@ -17,7 +19,10 @@ export const buildMdx = () => {
     const path = `./blog/${dir}`;
     for await (const dirEntry of Deno.readDir(path)) {
       const body = await Deno.readTextFile(`${path}/${dirEntry.name}`);
-      const compiled = await compile(body, { jsxImportSource: 'preact' });
+      const compiled = await compile(body, {
+        jsxImportSource: 'preact',
+        remarkPlugins: [gfm],
+      });
       const encodeFileName = encode(dirEntry.name.split('.')[0]);
 
       // console.log(hashFileName, string);
@@ -29,6 +34,5 @@ export const buildMdx = () => {
       );
     }
   });
+  console.log('finish');
 };
-
-buildMdx();

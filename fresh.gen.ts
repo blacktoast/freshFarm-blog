@@ -13,9 +13,10 @@ import * as $7 from "./routes/blog/notes/test.jsx";
 import * as $8 from "./routes/blog/posts/YQ==.jsx";
 import * as $9 from "./routes/blog/posts/Yg==.jsx";
 import * as $10 from "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx";
-import * as $11 from "./routes/blog/posts/dGVzdA==.jsx";
-import * as $12 from "./routes/index.tsx";
-import * as $13 from "./routes/test.ts";
+import * as $11 from "./routes/blog/posts/[slug].tsx";
+import * as $12 from "./routes/blog/posts/dGVzdA==.jsx";
+import * as $13 from "./routes/index.tsx";
+import * as $14 from "./routes/test.ts";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/Input.tsx";
 import * as $$2 from "./islands/Todo.tsx";
@@ -34,9 +35,10 @@ const manifest = {
     "./routes/blog/posts/Yg==.jsx": $9,
     "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx":
       $10,
-    "./routes/blog/posts/dGVzdA==.jsx": $11,
-    "./routes/index.tsx": $12,
-    "./routes/test.ts": $13,
+    "./routes/blog/posts/[slug].tsx": $11,
+    "./routes/blog/posts/dGVzdA==.jsx": $12,
+    "./routes/index.tsx": $13,
+    "./routes/test.ts": $14,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
