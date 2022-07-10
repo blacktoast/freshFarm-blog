@@ -20,7 +20,7 @@ function MDXContent(props = {}) {
     }, props.components);
     return _jsxs(_Fragment, {
       children: [_jsxs(_components.p, {
-        children: ["hihihi ", test, " ", _jsx(A, {}), "\naaaa"]
+        children: ["hihihi ", test, " ", _jsx(A, {}), "\naaaaxx"]
       }), "\n", _jsx(Test, {})]
     });
   }

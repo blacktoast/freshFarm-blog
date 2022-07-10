@@ -6,17 +6,14 @@ import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/api/joke.ts";
 import * as $2 from "./routes/api/test.ts";
 import * as $3 from "./routes/blog.tsx";
-import * as $4 from "./routes/blog/notes/098f6bcd4621d373cade4e832627b4f6.jsx";
-import * as $5 from "./routes/blog/notes/116,101,115,116.jsx";
-import * as $6 from "./routes/blog/notes/dGVzdA==.jsx";
-import * as $7 from "./routes/blog/notes/test.jsx";
-import * as $8 from "./routes/blog/posts/YQ==.jsx";
-import * as $9 from "./routes/blog/posts/Yg==.jsx";
-import * as $10 from "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx";
-import * as $11 from "./routes/blog/posts/[slug].tsx";
-import * as $12 from "./routes/blog/posts/dGVzdA==.jsx";
-import * as $13 from "./routes/index.tsx";
-import * as $14 from "./routes/test.ts";
+import * as $4 from "./routes/blog/notes/dGVzdA==.jsx";
+import * as $5 from "./routes/blog/posts/YQ==.jsx";
+import * as $6 from "./routes/blog/posts/Yg==.jsx";
+import * as $7 from "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx";
+import * as $8 from "./routes/blog/posts/[slug].tsx";
+import * as $9 from "./routes/blog/posts/dGVzdA==.jsx";
+import * as $10 from "./routes/index.tsx";
+import * as $11 from "./routes/test.ts";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/Input.tsx";
 import * as $$2 from "./islands/Todo.tsx";
@@ -27,18 +24,15 @@ const manifest = {
     "./routes/api/joke.ts": $1,
     "./routes/api/test.ts": $2,
     "./routes/blog.tsx": $3,
-    "./routes/blog/notes/098f6bcd4621d373cade4e832627b4f6.jsx": $4,
-    "./routes/blog/notes/116,101,115,116.jsx": $5,
-    "./routes/blog/notes/dGVzdA==.jsx": $6,
-    "./routes/blog/notes/test.jsx": $7,
-    "./routes/blog/posts/YQ==.jsx": $8,
-    "./routes/blog/posts/Yg==.jsx": $9,
+    "./routes/blog/notes/dGVzdA==.jsx": $4,
+    "./routes/blog/posts/YQ==.jsx": $5,
+    "./routes/blog/posts/Yg==.jsx": $6,
     "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx":
-      $10,
-    "./routes/blog/posts/[slug].tsx": $11,
-    "./routes/blog/posts/dGVzdA==.jsx": $12,
-    "./routes/index.tsx": $13,
-    "./routes/test.ts": $14,
+      $7,
+    "./routes/blog/posts/[slug].tsx": $8,
+    "./routes/blog/posts/dGVzdA==.jsx": $9,
+    "./routes/index.tsx": $10,
+    "./routes/test.ts": $11,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
