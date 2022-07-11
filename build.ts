@@ -14,6 +14,7 @@ export const buildMdx = async () => {
   await ensureFile(`./test.json`);
   let db = JSON.parse(await Deno.readTextFile('./test.json'));
   console.log(db);
+
   const promises = dirs.map(async (dir) => {
     const path = `./blog/${dir}`;
     for await (const dirEntry of Deno.readDir(path)) {
@@ -31,8 +32,8 @@ export const buildMdx = async () => {
         birthtime: fileStat.birthtime,
       };
       db = { ...db, [encodeFileName]: test };
-      console.log('object');
-      console.log(db[encodeFileName]);
+      // console.log('object');
+      // console.log(db[encodeFileName] === undefined);
       // console.log(db);
       // console.log(typeof fileStat.mtime, `${path}/${dirEntry.name}`);
       // db.query(`INSERT INTO ${dir} (title,atime) VALUES (?,?)`, [
@@ -62,8 +63,8 @@ export const buildMdx = async () => {
       // }
     }
   });
-  await Promise.all(promises);
 
+  await Promise.all(promises);
   await Deno.writeTextFile(`./test.json`, JSON.stringify(db));
 
   console.timeEnd('mdx build time ');
