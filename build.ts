@@ -11,7 +11,7 @@ export const buildMdx = async () => {
   console.time('mdx build time ');
   const dirs = ['posts', 'notes'];
   //먼자 한글파일부터 되는지 보자
-  await ensureFile(`./test.json`);
+  await ensureFile(`./test`);
   let db = JSON.parse(await Deno.readTextFile('./test.json'));
   console.log(db);
 
@@ -65,7 +65,7 @@ export const buildMdx = async () => {
   });
 
   await Promise.all(promises);
-  await Deno.writeTextFile(`./test.json`, JSON.stringify(db));
+  await Deno.writeTextFile(`./test`, JSON.stringify(db));
 
   console.timeEnd('mdx build time ');
 };
