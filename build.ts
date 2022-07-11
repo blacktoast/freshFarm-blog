@@ -13,7 +13,7 @@ export const buildMdx = async () => {
   //먼자 한글파일부터 되는지 보자
   await ensureFile(`./test`);
   let db = JSON.parse(await Deno.readTextFile('./test.json'));
-  console.log(db);
+  // console.log(db);
 
   const promises = dirs.map(async (dir) => {
     const path = `./blog/${dir}`;
@@ -50,16 +50,19 @@ export const buildMdx = async () => {
       // console.log(hashFileName, string);
       // console.log(Deno.statSync(`${path}/${dirEntry.name}`));
       // console.log(dirEntry.name);
-      const isFile = await exists(`./routes/blog/${dir}/${encodeFileName}.jsx`);
-      if (isFile) {
-        const existFile = await Deno.readTextFile(forWriteFileName);
+      const isFile = await ensureFile(
+        `./routes/blog/${dir}/${encodeFileName}.jsx`
+      );
+      // console.log(`./routes/blog/${dir}/${encodeFileName}.jsx`);
 
-        if (JSON.stringify(existFile) !== JSON.stringify(compiled.value)) {
-          await Deno.writeTextFile(
-            `./routes/blog/${dir}/${encodeFileName}.jsx`,
-            compiled
-          );
-        }
+      const existFile = await Deno.readTextFile(forWriteFileName);
+
+      if (JSON.stringify(existFile) !== JSON.stringify(compiled.value)) {
+        const test = await Deno.writeTextFile(
+          `./routes/blog/${dir}/${encodeFileName}.jsx`,
+          compiled
+        );
+        console.log(test);
       }
     }
   });
