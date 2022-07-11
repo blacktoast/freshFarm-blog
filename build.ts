@@ -65,7 +65,7 @@ export const buildMdx = async () => {
   });
 
   await Promise.all(promises);
-  await Deno.writeTextFile(`./test`, JSON.stringify(db));
+  await Deno.writeTextFile(`./test.js`, JSON.stringify(db));
 
   console.timeEnd('mdx build time ');
 };
