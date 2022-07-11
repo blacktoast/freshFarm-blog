@@ -31,10 +31,9 @@ export const buildMdx = async () => {
         birthtime: fileStat.birthtime,
       };
       db = { ...db, [encodeFileName]: test };
+      console.log('object');
       console.log(db[encodeFileName]);
       // console.log(db);
-      await Deno.writeTextFile(`./test.json`, JSON.stringify(db));
-
       // console.log(typeof fileStat.mtime, `${path}/${dirEntry.name}`);
       // db.query(`INSERT INTO ${dir} (title,atime) VALUES (?,?)`, [
       //   fileStat.isFile,
@@ -63,7 +62,9 @@ export const buildMdx = async () => {
       // }
     }
   });
-
   await Promise.all(promises);
+
+  await Deno.writeTextFile(`./test.json`, JSON.stringify(db));
+
   console.timeEnd('mdx build time ');
 };
