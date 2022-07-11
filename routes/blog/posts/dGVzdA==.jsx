@@ -15,12 +15,12 @@ function MDXContent(props = {}) {
       children: [_jsx(_components.p, {
         children: "이곳은 테스트\naaa"
       }), "\n", _jsx(_components.hr, {}), "\n", _jsx(_components.p, {
-        children: "tag :aa"
+        children: "tag :aaaa"
       }), "\n", _jsx(_components.hr, {}), "\n", _jsxs(_components.p, {
         children: ["aa\naaaa\n", _jsx(_components.img, {
           src: "'/logo.svg'",
           alt: "test"
-        })]
+        }), "\nss"]
       })]
     });
   }

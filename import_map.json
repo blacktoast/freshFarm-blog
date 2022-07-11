@@ -9,6 +9,7 @@
     "twind": "https://esm.sh/twind@0.16.17",
     "twind/": "https://esm.sh/twind@0.16.17/",
     "mdx": "https://esm.sh/@mdx-js/mdx@2.0.0-ci.53?target=deno",
-    "mdx2": "https://esm.sh/@mdx-js/mdx@2.0.0"
+    "mdx2": "https://esm.sh/@mdx-js/mdx@2.0.0",
+    "base64": "https://deno.land/std@0.147.0/encoding/base64.ts"
   }
 }
