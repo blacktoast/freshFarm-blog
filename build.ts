@@ -41,31 +41,31 @@ export const buildMdx = async () => {
       //   fileStat.atime,
       // ]);
 
-      // const compiled = await compile(body, {
-      //   jsxImportSource: 'preact',
-      //   remarkPlugins: [gfm],
-      // });
+      const compiled = await compile(body, {
+        jsxImportSource: 'preact',
+        remarkPlugins: [gfm],
+      });
       // const encodeFileName = encode(dirEntry.name.split('.')[0]);
       // const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
       // console.log(hashFileName, string);
       // console.log(Deno.statSync(`${path}/${dirEntry.name}`));
       // console.log(dirEntry.name);
-      // const isFile = await exists(`./routes/blog/${dir}/${encodeFileName}.jsx`);
-      // if (isFile) {
-      //   const existFile = await Deno.readTextFile(forWriteFileName);
+      const isFile = await exists(`./routes/blog/${dir}/${encodeFileName}.jsx`);
+      if (isFile) {
+        const existFile = await Deno.readTextFile(forWriteFileName);
 
-      //   if (JSON.stringify(existFile) !== JSON.stringify(compiled.value)) {
-      //     await Deno.writeTextFile(
-      //       `./routes/blog/${dir}/${encodeFileName}.jsx`,
-      //       compiled
-      //     );
-      //   }
-      // }
+        if (JSON.stringify(existFile) !== JSON.stringify(compiled.value)) {
+          await Deno.writeTextFile(
+            `./routes/blog/${dir}/${encodeFileName}.jsx`,
+            compiled
+          );
+        }
+      }
     }
   });
 
   await Promise.all(promises);
-  await Deno.writeTextFile(`./test.js`, JSON.stringify(db));
+  // await Deno.writeTextFile(`./test.js`, JSON.stringify(db));
 
   console.timeEnd('mdx build time ');
 };
