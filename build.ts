@@ -11,12 +11,17 @@ export const buildMdx = async () => {
   console.time('mdx build time ');
   const dirs = ['posts', 'notes'];
   //먼자 한글파일부터 되는지 보자
-  await ensureFile(`./test`);
-  let db = JSON.parse(await Deno.readTextFile('./test.json'));
+  await ensureFile(`./mdxIndex.json`);
+  let db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
   // console.log(db);
 
   const promises = dirs.map(async (dir) => {
     const path = `./blog/${dir}`;
+
+    const dirObj = {
+      [dir]: '',
+    };
+
     for await (const dirEntry of Deno.readDir(path)) {
       const readFileName = `${path}/${dirEntry.name}`;
       const body = await Deno.readTextFile(`${path}/${dirEntry.name}`);
@@ -31,7 +36,7 @@ export const buildMdx = async () => {
         mtime: fileStat.mtime,
         birthtime: fileStat.birthtime,
       };
-      db = { ...db, [encodeFileName]: test };
+      db = { ...db, [dir]: { ...db[dir], [encodeFileName]: test } };
       // console.log('object');
       // console.log(db[encodeFileName] === undefined);
       // console.log(db);
@@ -68,7 +73,7 @@ export const buildMdx = async () => {
   });
 
   await Promise.all(promises);
-  // await Deno.writeTextFile(`./test.js`, JSON.stringify(db));
-
+  await Deno.writeTextFile(`./mdxIndex.json`, JSON.stringify(db));
+  console.log(db.notes);
   console.timeEnd('mdx build time ');
 };
