@@ -61,7 +61,6 @@ export default function Home(props: PageProps) {
       </Head>
       <Counter start={3}></Counter>
       <img src="/image/Test.png" alt="" />
-      <Test></Test>
       <Page></Page>
     </div>
   );
