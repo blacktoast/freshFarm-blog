@@ -16,7 +16,6 @@ const names = ['Peter Parker', 'Clark Kent', 'Bruce Wayne'];
 // Run a simple query
 
 export const buildMdx = async () => {
-  console.log(t);
   console.time('mdx build time ');
   const dirs = ['posts', 'notes'];
   //먼자 한글파일부터 되는지 보자
