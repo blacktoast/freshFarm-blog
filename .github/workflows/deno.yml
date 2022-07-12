@@ -31,6 +31,9 @@ jobs:
         
       - name: Clone repository
         uses: actions/checkout@v3
+      
+      - name : build mdx
+        run : deno task build  
 
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
