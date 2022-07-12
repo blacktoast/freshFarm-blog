@@ -10,7 +10,7 @@ function MDXContent(props = {}) {
       p: "p"
     }, props.components);
     return _jsx(_components.p, {
-      children: "ttest\ntstt"
+      children: "ttest\ntstt\naaa\naaaaa\naaaaa"
     });
   }
 }
