@@ -9,7 +9,6 @@ import * as gfm from 'https://esm.sh/remark-gfm@3.0.1';
 const baseDir = './blog/';
 
 // Open a database
-import { DB } from 'https://deno.land/x/sqlite/mod.ts';
 // Open a database
 
 const names = ['Peter Parker', 'Clark Kent', 'Bruce Wayne'];
@@ -17,7 +16,6 @@ const names = ['Peter Parker', 'Clark Kent', 'Bruce Wayne'];
 // Run a simple query
 
 export const buildMdx = async () => {
-  const t = Deno.openSync('./dbtest.ts');
   console.log(t);
   console.time('mdx build time ');
   const dirs = ['posts', 'notes'];
