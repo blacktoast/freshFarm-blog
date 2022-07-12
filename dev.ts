@@ -4,7 +4,7 @@ import { buildMdx } from './build.ts';
 
 import dev from '$fresh/dev.ts';
 import { compile } from 'mdx2';
-
+await buildMdx();
 // import {
 //   decode as utf8Decode,
 //   encode as utf8Encode,

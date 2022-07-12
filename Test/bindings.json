@@ -1,0 +1,1 @@
+{"name":"Test","littleEndian":true,"symbols":{"add":{"parameters":[{"structenum":{"ident":"Input"}}],"result":"i32","nonBlocking":false}},"typeDefs":{"Input":{"b":"i32","a":"i32"}},"tsTypes":{"Input":"export type Input = {\n    a: number;\n  b: number;\n};"}}
