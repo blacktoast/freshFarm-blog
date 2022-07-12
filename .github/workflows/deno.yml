@@ -38,7 +38,7 @@ jobs:
             deno-version: v1.x
       
       - name : build mdx
-        run : deno run -A build.ts
+        run : deno run -A --unstable build.ts
 
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
