@@ -8,11 +8,12 @@ function MDXContent(props = {}) {
   function _createMdxContent() {
     const _components = Object.assign({
       p: "p",
+      br: "br",
       a: "a"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsx(_components.p, {
-        children: "가볼까??\n가보자고\n가본다고?\naaa"
+      children: [_jsxs(_components.p, {
+        children: ["가볼까??", _jsx(_components.br, {}), "\n", "가보자고", _jsx(_components.br, {}), "\n", "가본다고?", _jsx(_components.br, {}), "\n", "aaa"]
       }), "\n", _jsx("img", {
         src: "/image/Test.png",
         alt: ""

@@ -1,15 +1,13 @@
+import { pageGen } from './pagegen.tsx';
 import { compile, run, evaluate } from 'mdx2';
 
 import { decode, encode } from 'base64';
 
 import { exists, ensureFile } from 'https://deno.land/std@0.147.0/fs/mod.ts';
-import * as gfm from 'https://esm.sh/remark-gfm@3.0.1';
+import gfm from 'https://esm.sh/remark-gfm@3.0.1';
 // import { add } from './Test/bindings/bindings.ts';
-import * as yaml from 'https://esm.sh/js-yaml@4.1.0';
-import * as pre from 'https://esm.sh/preact@10.9.0/jsx-runtime';
-const baseDir = './blog/';
+import * as preactJsx from 'https://esm.sh/preact@10.9.0/jsx-runtime';
 import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
-import * as ymljs from 'https://esm.sh/js-yaml@4.1.0';
 // Open a database
 // Open a database
 
@@ -33,24 +31,40 @@ const metaTagParsing = (rawTexts: string[]) => {
       }
     }
   });
-  console.log(tags);
   return tags;
 };
 
+const hardEnter = (rawTexts: string[]) => {
+  const a = rawTexts
+    .map((text) => {
+      if (text.length === 0) return '\n';
+      else return `${text}  `;
+    })
+    .join('\n');
+  return a;
+};
+
+const removeExportCodeToComplied = (compiled: string) => {
+  compiled.split('\n').map((line) => {
+    console.log(line === 'export default MDXContent;');
+  });
+};
+
 export const buildMdx = async () => {
+  const baseDir = 'blog';
   console.time('mdx build time ');
   const dirs = ['posts', 'notes'];
-  //먼자 한글파일부터 되는지 보자
   await ensureFile(`./mdxIndex.json`);
   let newDB = {};
 
   let db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
+
   const fileNames: any = {
     posts: [],
     notes: [],
   };
   const promises = dirs.map(async (dir) => {
-    const path = `./blog/${dir}`;
+    const path = `./${baseDir}/${dir}`;
 
     const dirObj = {
       [dir]: '',
@@ -65,6 +79,8 @@ export const buildMdx = async () => {
       const rawTexts = body.split('\n');
       const tags = metaTagParsing(rawTexts);
 
+      const enterBody = hardEnter(rawTexts);
+
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
       const encodeFileName = encode(dirEntry.name.split('.')[0]);
       const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
@@ -73,64 +89,67 @@ export const buildMdx = async () => {
         tags,
         path: forWriteFileName,
         atime: fileStat.atime,
-        mtime: fileStat.mtime,
+        mtime: Date.parse(fileStat.mtime),
         birthtime: fileStat.birthtime,
       };
       fileNames[dir].push(encodeFileName);
-      // console.log(
-      //   db[dir][encodeFileName].mtime,
-      //   fileStat.mtime,
-      //   JSON.stringify(db[dir][encodeFileName].mtime) ===
-      //     JSON.stringify(fileStat.mtime)
-      // );
+
       newDB = {
         ...newDB,
         [dir]: { ...newDB[dir], [encodeFileName]: fileInfo },
       };
 
-      // console.log('object');
-      // console.log(db[encodeFileName] === undefined);
-      // console.log(db);
-      // console.log(typeof fileStat.mtime, `${path}/${dirEntry.name}`);
-
-      const compiled = await compile(body, {
+      const compiled = await compile(enterBody, {
         jsxImportSource: 'preact',
         remarkPlugins: [gfm, remarkFrontmatter],
       });
+      const evalFile = await evaluate(enterBody, {
+        ...preactJsx,
+        remarkPlugins: [gfm, remarkFrontmatter],
+        useDynamicImport: true,
+      });
+      const page = pageGen(compiled);
+      removeExportCodeToComplied(String(compiled.value));
+      // await Deno.writeTextFile(`./routes/blog/posts/test.jsx`, page);
 
+      // console.log(evalFile.default);
       // const encodeFileName = encode(dirEntry.name.split('.')[0]);
       // const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
       // console.log(hashFileName, string);
       // console.log(Deno.statSync(`${path}/${dirEntry.name}`));
       // console.log(dirEntry.name);
+
       const isFile = await ensureFile(
         `./routes/blog/${dir}/${encodeFileName}.jsx`
       );
       // console.log(`./routes/blog/${dir}/${encodeFileName}.jsx`);
 
       const existFile = await Deno.readTextFile(forWriteFileName);
-      if (JSON.stringify(existFile) !== JSON.stringify(compiled.value)) {
-        await Deno.writeTextFile(
-          `./routes/blog/${dir}/${encodeFileName}.jsx`,
-          compiled
-        );
-      }
+      // console.log(
+      //   String(db[dir][encodeFileName].mtime),
+      //   String(fileInfo.mtime),
+      //   db[dir][encodeFileName].mtime === String(fileInfo.mtime)
+      // );
+      // await Deno.writeTextFile(
+      //   `./routes/blog/${dir}/${encodeFileName}.jsx`,
+      //   compiled
+      // );
+      // // }
     }
   });
 
   await Promise.all(promises);
   await Deno.writeTextFile(`./mdxIndex.json`, JSON.stringify(newDB));
-  console.log(newDB);
-  // const removeFilePromises = dirs.map((dir) => {
-  //   Object.keys(db[dir]).map(async (key) => {
-  //     if (Object.keys(newDB[dir]).includes(key) === false) {
-  //       const name = db[dir][key].path;
-  //       await Deno.remove(name);
-  //       console.log(name);
-  //     }
-  //   });
-  // });
-  // await Promise.all(removeFilePromises);
+  const removeFilePromises = dirs.map((dir) => {
+    Object.keys(db[dir]).map(async (key) => {
+      if (Object.keys(newDB[dir]).includes(key) === false) {
+        const name = db[dir][key].path;
+        await Deno.remove(name);
+        console.log(name);
+      }
+    });
+  });
+  await Promise.all(removeFilePromises);
 
   console.timeEnd('mdx build time ');
 };
