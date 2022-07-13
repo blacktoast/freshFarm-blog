@@ -93,10 +93,8 @@ export const buildMdx = async () => {
 
   await Promise.all(promises);
   await Deno.writeTextFile(`./mdxIndex.json`, JSON.stringify(newDB));
-  // console.log(db2.notes);
-  // console.log('new', newDB);
-  // console.log(fileNames);
-  const test = dirs.map((dir) => {
+
+  const removeFilePromises = dirs.map((dir) => {
     Object.keys(db[dir]).map(async (key) => {
       if (Object.keys(newDB[dir]).includes(key) === false) {
         const name = db[dir][key].path;
@@ -105,7 +103,7 @@ export const buildMdx = async () => {
       }
     });
   });
-  await Promise.all(test);
+  await Promise.all(removeFilePromises);
 
   console.timeEnd('mdx build time ');
 };
