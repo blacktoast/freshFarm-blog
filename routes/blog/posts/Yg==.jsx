@@ -10,7 +10,7 @@ function MDXContent(props = {}) {
       p: "p"
     }, props.components);
     return _jsx(_components.p, {
-      children: "testtest"
+      children: "가자고 가"
     });
   }
 }

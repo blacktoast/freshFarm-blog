@@ -11,8 +11,6 @@ const baseDir = './blog/';
 // Open a database
 // Open a database
 
-const names = ['Peter Parker', 'Clark Kent', 'Bruce Wayne'];
-
 // Run a simple query
 
 export const buildMdx = async () => {
@@ -20,9 +18,13 @@ export const buildMdx = async () => {
   const dirs = ['posts', 'notes'];
   //먼자 한글파일부터 되는지 보자
   await ensureFile(`./mdxIndex.json`);
-  let db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
-  console.log(db);
+  let newDB = {};
 
+  let db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
+  const fileNames: any = {
+    posts: [],
+    notes: [],
+  };
   const promises = dirs.map(async (dir) => {
     const path = `./blog/${dir}`;
 
@@ -30,26 +32,35 @@ export const buildMdx = async () => {
       [dir]: '',
     };
 
+    // mdx파일의 데이터 값을 가져오기
+    // 해당 파일로 있는 jsx파일이 있는지 찾기
+    // 만약 없는 mdx파일이
     for await (const dirEntry of Deno.readDir(path)) {
       const readFileName = `${path}/${dirEntry.name}`;
       const body = await Deno.readTextFile(`${path}/${dirEntry.name}`);
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
-      await ensureFile(`./test.json`);
+
       const encodeFileName = encode(dirEntry.name.split('.')[0]);
       const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
-      const test = {
+      const fileInfo = {
         title: readFileName,
+        path: forWriteFileName,
+
         atime: fileStat.atime,
         mtime: fileStat.mtime,
         birthtime: fileStat.birthtime,
       };
+      fileNames[dir].push(encodeFileName);
       // console.log(
       //   db[dir][encodeFileName].mtime,
       //   fileStat.mtime,
       //   JSON.stringify(db[dir][encodeFileName].mtime) ===
       //     JSON.stringify(fileStat.mtime)
       // );
-      // db = { ...db, [dir]: { ...db[dir], [encodeFileName]: test } };
+      newDB = {
+        ...newDB,
+        [dir]: { ...newDB[dir], [encodeFileName]: fileInfo },
+      };
 
       // console.log('object');
       // console.log(db[encodeFileName] === undefined);
@@ -71,19 +82,32 @@ export const buildMdx = async () => {
       // console.log(`./routes/blog/${dir}/${encodeFileName}.jsx`);
 
       const existFile = await Deno.readTextFile(forWriteFileName);
-
       if (JSON.stringify(existFile) !== JSON.stringify(compiled.value)) {
-        const test = await Deno.writeTextFile(
+        await Deno.writeTextFile(
           `./routes/blog/${dir}/${encodeFileName}.jsx`,
           compiled
         );
-        console.log(test);
       }
     }
   });
 
   await Promise.all(promises);
-  // await Deno.writeTextFile(`./mdxIndex.json`, JSON.stringify(db));
+  await Deno.writeTextFile(`./mdxIndex.json`, JSON.stringify(newDB));
   // console.log(db2.notes);
+  // console.log('new', newDB);
+  // console.log(fileNames);
+  const test = dirs.map((dir) => {
+    Object.keys(db[dir]).map(async (key) => {
+      if (Object.keys(newDB[dir]).includes(key) === false) {
+        const name = db[dir][key].path;
+        await Deno.remove(name);
+        console.log(name);
+      }
+    });
+  });
+  await Promise.all(test);
+
   console.timeEnd('mdx build time ');
 };
+
+buildMdx();

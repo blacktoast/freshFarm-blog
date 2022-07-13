@@ -8,7 +8,6 @@ import { buildMdx } from './build.ts';
 
 import { InnerRenderFunction, RenderContext, start } from '$fresh/server.ts';
 import manifest from './fresh.gen.ts';
-buildMdx();
 import { config, setup } from '@twind';
 import { virtualSheet } from 'twind/sheets';
 const sheet = virtualSheet();

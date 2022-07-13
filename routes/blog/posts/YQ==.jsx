@@ -7,7 +7,8 @@ function MDXContent(props = {}) {
   })) : _createMdxContent();
   function _createMdxContent() {
     const _components = Object.assign({
-      p: "p"
+      p: "p",
+      a: "a"
     }, props.components);
     return _jsxs(_Fragment, {
       children: [_jsx(_components.p, {
@@ -15,6 +16,13 @@ function MDXContent(props = {}) {
       }), "\n", _jsx("img", {
         src: "/image/Test.png",
         alt: ""
+      }), "\n", _jsx(_components.p, {
+        children: _jsx(_components.a, {
+          href: "test",
+          children: "tes"
+        })
+      }), "\n", _jsx(_components.p, {
+        children: "[[test]]"
       })]
     });
   }
