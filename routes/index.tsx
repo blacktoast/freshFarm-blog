@@ -5,6 +5,8 @@ import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import Input from '@/islands/Input.tsx';
 import { useState } from 'preact/hooks';
+import Test from './blog/posts/Yg==.jsx';
+
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
@@ -27,7 +29,7 @@ export default function Home() {
 
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
-      <Input></Input>
+      <Test></Test>
     </div>
   );
 }
