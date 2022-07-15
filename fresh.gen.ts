@@ -7,18 +7,18 @@ import * as $1 from "./routes/api/joke.ts";
 import * as $2 from "./routes/api/test.ts";
 import * as $3 from "./routes/blog.tsx";
 import * as $4 from "./routes/blog/notes/dGVzdA==.jsx";
-import * as $5 from "./routes/blog/posts/YQ==.jsx";
-import * as $6 from "./routes/blog/posts/Yg==.jsx";
+import * as $5 from "./routes/blog/posts/7ZWY7J20.jsx";
+import * as $6 from "./routes/blog/posts/Y2M=.jsx";
 import * as $7 from "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx";
-import * as $8 from "./routes/blog/posts/[slug].tsx";
-import * as $9 from "./routes/blog/posts/dHQ=.jsx";
-import * as $10 from "./routes/blog/posts/dHR0dHQ=.jsx";
-import * as $11 from "./routes/blog/posts/test.jsx";
-import * as $12 from "./routes/index.tsx";
-import * as $13 from "./routes/test.ts";
-import * as $$0 from "./islands/Counter.tsx";
-import * as $$1 from "./islands/Input.tsx";
-import * as $$2 from "./islands/Todo.tsx";
+import * as $8 from "./routes/blog/posts/dGVzdA==.jsx";
+import * as $9 from "./routes/blog/posts/dHN0dA==.jsx";
+import * as $10 from "./routes/blog/posts/dHg=.jsx";
+import * as $11 from "./routes/index.tsx";
+import * as $12 from "./routes/test.ts";
+import * as $$0 from "./islands/CopyCode.tsx";
+import * as $$1 from "./islands/Counter.tsx";
+import * as $$2 from "./islands/Input.tsx";
+import * as $$3 from "./islands/Todo.tsx";
 
 const manifest = {
   routes: {
@@ -27,21 +27,21 @@ const manifest = {
     "./routes/api/test.ts": $2,
     "./routes/blog.tsx": $3,
     "./routes/blog/notes/dGVzdA==.jsx": $4,
-    "./routes/blog/posts/YQ==.jsx": $5,
-    "./routes/blog/posts/Yg==.jsx": $6,
+    "./routes/blog/posts/7ZWY7J20.jsx": $5,
+    "./routes/blog/posts/Y2M=.jsx": $6,
     "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx":
       $7,
-    "./routes/blog/posts/[slug].tsx": $8,
-    "./routes/blog/posts/dHQ=.jsx": $9,
-    "./routes/blog/posts/dHR0dHQ=.jsx": $10,
-    "./routes/blog/posts/test.jsx": $11,
-    "./routes/index.tsx": $12,
-    "./routes/test.ts": $13,
+    "./routes/blog/posts/dGVzdA==.jsx": $8,
+    "./routes/blog/posts/dHN0dA==.jsx": $9,
+    "./routes/blog/posts/dHg=.jsx": $10,
+    "./routes/index.tsx": $11,
+    "./routes/test.ts": $12,
   },
   islands: {
-    "./islands/Counter.tsx": $$0,
-    "./islands/Input.tsx": $$1,
-    "./islands/Todo.tsx": $$2,
+    "./islands/CopyCode.tsx": $$0,
+    "./islands/Counter.tsx": $$1,
+    "./islands/Input.tsx": $$2,
+    "./islands/Todo.tsx": $$3,
   },
   baseUrl: import.meta.url,
 };

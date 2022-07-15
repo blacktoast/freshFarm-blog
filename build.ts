@@ -1,13 +1,13 @@
-import { pageGen } from './pagegen.tsx';
-import { compile, run, evaluate } from 'mdx2';
+import { pageGen } from "./pagegen.tsx";
+import { compile, run, evaluate } from "mdx2";
 
-import { decode, encode } from 'base64';
+import { decode, encode } from "base64";
 
-import { exists, ensureFile } from 'https://deno.land/std@0.147.0/fs/mod.ts';
-import gfm from 'https://esm.sh/remark-gfm@3.0.1';
+import { exists, ensureFile } from "https://deno.land/std@0.147.0/fs/mod.ts";
+import gfm from "https://esm.sh/remark-gfm@3.0.1";
 // import { add } from './Test/bindings/bindings.ts';
-import * as preactJsx from 'https://esm.sh/preact@10.9.0/jsx-runtime';
-import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
+import * as preactJsx from "https://esm.sh/preact@10.9.0/jsx-runtime";
+import remarkFrontmatter from "https://esm.sh/remark-frontmatter@4?bundle";
 // Open a database
 // Open a database
 
@@ -18,14 +18,14 @@ const metaTagParsing = (rawTexts: string[]) => {
   let flag = false;
   let tags: string[] = [];
   rawTexts.map((text) => {
-    if (text === '---' || text.slice(0, 3) === '---') {
+    if (text === "---" || text.slice(0, 3) === "---") {
       flag = !flag;
     }
     if (flag) {
-      const splitBlocks = text.split(':');
-      if (splitBlocks[0] === 'tags') {
+      const splitBlocks = text.split(":");
+      if (splitBlocks[0] === "tags") {
         tags = splitBlocks[1]
-          .split('#')
+          .split("#")
           .slice(1)
           .map((a) => a.trim());
       }
@@ -37,27 +37,32 @@ const metaTagParsing = (rawTexts: string[]) => {
 const hardEnter = (rawTexts: string[]) => {
   const a = rawTexts
     .map((text) => {
-      if (text.length === 0) return '\n';
+      if (text.length === 0) return "\n";
       else return `${text}  `;
     })
-    .join('\n');
+    .join("\n");
   return a;
 };
 
 const removeExportCodeToComplied = (compiled: string) => {
-  compiled.split('\n').map((line) => {
-    console.log(line === 'export default MDXContent;');
-  });
+  return compiled
+    .split("\n")
+    .filter((line) => {
+      return line !== "export default MDXContent;";
+    })
+    .join("\n");
 };
-
+interface newDB {
+  [key: string]: object;
+}
 export const buildMdx = async () => {
-  const baseDir = 'blog';
-  console.time('mdx build time ');
-  const dirs = ['posts', 'notes'];
+  const baseDir = "blog";
+  console.time("mdx build time ");
+  const dirs = ["posts", "notes"];
   await ensureFile(`./mdxIndex.json`);
-  let newDB = {};
+  let newDB: newDB = {};
 
-  let db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
+  let db = JSON.parse(await Deno.readTextFile("./mdxIndex.json"));
 
   const fileNames: any = {
     posts: [],
@@ -67,31 +72,37 @@ export const buildMdx = async () => {
     const path = `./${baseDir}/${dir}`;
 
     const dirObj = {
-      [dir]: '',
+      [dir]: "",
     };
 
     // mdx파일의 데이터 값을 가져오기
     // 해당 파일로 있는 jsx파일이 있는지 찾기
-    // 만약 없는 mdx파일이
+    // code 복사 기능 넣기, 그렇다면 코드 하이 라이팅 + 카피 기능을 넣어야 함
+    // ``` ``` 이건 파싱을 한다 하더라고 코드하이라이팅은 어떻게 하지??
+    // 가능성이 떨어짐, fresh 프레임워크에서 인터렉션이 가능한건 island 폴더뿐인데 여기서는 children를 받지 못함
+    // 그럼 형제 노드로 가야하나?? 형제 노드로 간다 쳐도, 아이콘은 코드안에 존재 해야하는데 그게 되나??
+    // 파싱할때 ``` 마크다운 위에 컴포넌트를 집어 넣으면 될듯 해서 구현 성공을 한듯 하다.
     for await (const dirEntry of Deno.readDir(path)) {
       const readFileName = `${path}/${dirEntry.name}`;
       const body = await Deno.readTextFile(`${path}/${dirEntry.name}`);
-      const rawTexts = body.split('\n');
+      const rawTexts = body.split("\n");
       const tags = metaTagParsing(rawTexts);
 
       const enterBody = hardEnter(rawTexts);
 
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
-      const encodeFileName = encode(dirEntry.name.split('.')[0]);
+      const encodeFileName = encode(dirEntry.name.split(".")[0]);
       const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
+
       const fileInfo = {
-        title: readFileName,
+        title: dirEntry,
         tags,
         path: forWriteFileName,
         atime: fileStat.atime,
-        mtime: Date.parse(fileStat.mtime),
+        mtime: Date.parse(fileStat.mtime || new Date()),
         birthtime: fileStat.birthtime,
       };
+      console.log(fileInfo);
       fileNames[dir].push(encodeFileName);
 
       newDB = {
@@ -99,17 +110,7 @@ export const buildMdx = async () => {
         [dir]: { ...newDB[dir], [encodeFileName]: fileInfo },
       };
 
-      const compiled = await compile(enterBody, {
-        jsxImportSource: 'preact',
-        remarkPlugins: [gfm, remarkFrontmatter],
-      });
-      const evalFile = await evaluate(enterBody, {
-        ...preactJsx,
-        remarkPlugins: [gfm, remarkFrontmatter],
-        useDynamicImport: true,
-      });
-      const page = pageGen(compiled);
-      removeExportCodeToComplied(String(compiled.value));
+      // console.log(removeExportCodeToComplied(String(compiled.value)));
       // await Deno.writeTextFile(`./routes/blog/posts/test.jsx`, page);
 
       // console.log(evalFile.default);
@@ -119,21 +120,24 @@ export const buildMdx = async () => {
       // console.log(Deno.statSync(`${path}/${dirEntry.name}`));
       // console.log(dirEntry.name);
 
-      const isFile = await ensureFile(
-        `./routes/blog/${dir}/${encodeFileName}.jsx`
-      );
-      // console.log(`./routes/blog/${dir}/${encodeFileName}.jsx`);
+      await ensureFile(forWriteFileName);
 
-      const existFile = await Deno.readTextFile(forWriteFileName);
-      // console.log(
-      //   String(db[dir][encodeFileName].mtime),
-      //   String(fileInfo.mtime),
-      //   db[dir][encodeFileName].mtime === String(fileInfo.mtime)
-      // );
-      // await Deno.writeTextFile(
-      //   `./routes/blog/${dir}/${encodeFileName}.jsx`,
-      //   compiled
-      // );
+      // console.log(`./routes/blog/${dir}/${encodeFileName}.jsx`);
+      const existsFileEditedTime = db[dir][encodeFileName]?.mtime || 0;
+
+      if (String(existsFileEditedTime) !== String(fileInfo.mtime)) {
+        const compiled = await compile(enterBody, {
+          jsxImportSource: "preact",
+          remarkPlugins: [gfm, remarkFrontmatter],
+        });
+
+        const page = pageGen(
+          removeExportCodeToComplied(String(compiled.value))
+        );
+        console.log(page);
+        await Deno.writeTextFile(forWriteFileName, page);
+      }
+
       // // }
     }
   });
@@ -149,9 +153,11 @@ export const buildMdx = async () => {
       }
     });
   });
-  await Promise.all(removeFilePromises);
 
-  console.timeEnd('mdx build time ');
+  await Promise.all(removeFilePromises);
+  console.log("end");
+
+  console.timeEnd("mdx build time ");
 };
 
 buildMdx();

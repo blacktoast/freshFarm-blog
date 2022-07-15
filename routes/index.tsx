@@ -1,12 +1,12 @@
 /** @jsx h */
-import { h } from 'preact';
-import { tw } from '@twind';
-import Counter from '../islands/Counter.tsx';
-import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
-import Input from '@/islands/Input.tsx';
-import { useState } from 'preact/hooks';
-import Test from './blog/posts/Yg==.jsx';
-
+import { h, Fragment } from "preact";
+import { tw } from "@twind";
+import Counter from "../islands/Counter.tsx";
+import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import Input from "@/islands/Input.tsx";
+import { useState } from "preact/hooks";
+import { Header } from "@/components/Header.tsx";
+import CopyCode from "@/islands/CopyCode.tsx";
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
 //     const { username } = ctx.params;
@@ -21,15 +21,19 @@ import Test from './blog/posts/Yg==.jsx';
 // };
 
 export default function Home() {
-  const [st, setState] = useState('');
+  const [st, setState] = useState("");
   const change = (e: any) => {
-    console.log(e);
+    alert(e);
   };
   const [count, setCount] = useState(0);
 
   return (
-    <div class={tw`p-4 mx-auto max-w-screen-md`}>
-      <Test></Test>
-    </div>
+    <Fragment>
+      <Header></Header>
+      <main>
+        <CopyCode></CopyCode>
+        <div class={tw`lg:max-w-screen-md px-6 pt-8 mx-auto`}>testtesttest</div>
+      </main>
+    </Fragment>
   );
 }

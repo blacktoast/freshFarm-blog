@@ -1,5 +1,4 @@
-export const pageGen = (component: any) => {
-  return `
+
   /** @jsx h */
   import { h } from 'preact';
   import { tw } from '@twind';
@@ -9,7 +8,24 @@ export const pageGen = (component: any) => {
   import { Input } from '@/components/Input.tsx';
   import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
 
-  ${component}
+  /*@jsxRuntime automatic @jsxImportSource preact*/
+import {jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
+function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
+    children: _jsx(_createMdxContent, {})
+  })) : _createMdxContent();
+  function _createMdxContent() {
+    const _components = Object.assign({
+      p: "p",
+      br: "br"
+    }, props.components);
+    return _jsxs(_components.p, {
+      children: ["test", _jsx(_components.br, {}), "\n", "결국 우리는 이제느", _jsx(_components.br, {}), "\n", "aaa"]
+    });
+  }
+}
+
 
   export default function Home() {
     return (
@@ -28,5 +44,4 @@ export const pageGen = (component: any) => {
     );
   }
   
-  `;
-};
+  
