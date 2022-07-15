@@ -1,0 +1,105 @@
+
+  /** @jsx h */
+  import { h } from 'preact';
+  import { tw } from '@twind';
+  import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
+  import { Head } from '$fresh/runtime.ts';
+  import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
+
+  /*@jsxRuntime automatic @jsxImportSource preact*/
+import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
+import {Test, Text} from '@/mc/index.ts';
+function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
+    children: _jsx(_createMdxContent, {})
+  })) : _createMdxContent();
+  function _createMdxContent() {
+    const _components = Object.assign({
+      p: "p",
+      br: "br",
+      pre: "pre",
+      code: "code",
+      h1: "h1",
+      h2: "h2"
+    }, props.components);
+    return _jsxs(_Fragment, {
+      children: [_jsxs(_components.p, {
+        children: ["#임시메모", _jsx(_components.br, {}), "\n", "aa 오 나쁘지 않는데", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯", _jsx(_components.br, {}), "\n", "a", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자"]
+      }), "\n", _jsx(_components.pre, {
+        children: _jsx(_components.code, {
+          className: "language-js",
+          children: "큰문제는 없을거에요  \n"
+        })
+      }), "\n", _jsxs(_components.p, {
+        children: ["이렇다는 건데 흠..", _jsx(_components.br, {}), "\n", "이게 맞나??", _jsx(_components.br, {}), "\n", "애매..하단말이지"]
+      }), "\n", _jsxs(_components.p, {
+        children: ["결국에는 흠aa애매한데", _jsx(_components.br, {}), "\n", "ㅁㅁㅁ", _jsx(_components.br, {}), "\n", "결국에는", _jsx(_components.br, {}), "\n", "이게 시간이 걸린단 말이지"]
+      }), "\n", _jsxs(_components.p, {
+        children: ["흠 애매 하단 말이지", _jsx(_components.br, {}), "\n", _jsx(_components.code, {
+          children: "그래"
+        }), " 잘해 보자"]
+      }), "\n", _jsx(_components.pre, {
+        children: _jsx(_components.code, {
+          className: "language-js",
+          children: "let a = 'test';  \n"
+        })
+      }), "\n", _jsx(_components.h1, {
+        children: "결국 그런거지"
+      }), "\n", _jsx(Text, {}), "\n", _jsxs(_components.p, {
+        children: ["gfm을 하려고 했으나 ", _jsx(_components.code, {
+          children: "\\n"
+        }), " 이 개행이 안됨 해서 다른 마크다운 파서를 찾다가 markdown-it", _jsx(_components.br, {}), "\n", "파서 발견aas"]
+      }), "\n", _jsx(_components.p, {
+        children: "이걸로 가자"
+      }), "\n", _jsx(_components.h1, {
+        children: "기능 구현"
+      }), "\n", _jsxs(_components.p, {
+        children: [_jsx(Test, {
+          children: " 이제는 기능 구현을 거의 완료 했죠 "
+        }), "이 css의 문제는 css가 튄다는", _jsx(_components.br, {}), "\n", "점이다 흠aa애매한데"]
+      }), "\n", _jsx(Text, {}), "\n", _jsx(_components.p, {
+        children: "애바지 에바야 흠"
+      }), "\n", _jsx(_components.h2, {
+        children: "태그기반 구현"
+      }), "\n", _jsxs(_components.p, {
+        children: ["TIL, notes, posts로 구분하고", _jsx(_components.br, {}), "\n", "tag기반으로 또 구현"]
+      }), "\n", _jsx(_components.h2, {
+        children: "페이지 문제a"
+      }), "\n", _jsxs(_components.p, {
+        children: ["aa", _jsx(_components.br, {}), "\n", "그렇다면 결국에는 흠", _jsx(_components.br, {}), "\n", "mdx->jsx로 빌드를 했는데 이걸 page 안에 넣어야한다.", _jsx(_components.br, {}), "\n", "근데 페이지 따로 빌드한 컴포넌트 따로 하게 되면 이게 파일이 1개의 mdx", _jsx(_components.br, {}), "\n", "2개의 jsx파일이 만들어지면서 한 문서에 3파일이 있게된다.."]
+      }), "\n", _jsxs(_components.p, {
+        children: ["흠,,", _jsx(_components.br, {}), "\n", "한문서에 한큐에 넣으려니깐 문제는 import문도 안잡히고", _jsx(_components.br, {}), "\n", "기타 다른 컴포넌트 함수도 분리가 되는 문제가 있다..흠"]
+      }), "\n", _jsx(_components.h2, {
+        children: "mdx -> jsx 빌드 성능 문제"
+      }), "\n", _jsxs(_components.p, {
+        children: ["천줄 넘어가는 파일이 20개 정도 있으니깐 시간이 1초 정도 걸린다 흠", _jsx(_components.br, {}), "\n", "전체 파일을 다 빌드를 돌려서 발생하는 문에 인듯 하다."]
+      }), "\n", _jsx(_components.p, {
+        children: "해서 만약 sqlite를 fresh에서 가능할까 했는데 안되네"
+      })]
+    });
+  }
+}
+
+
+  export default function Home(props: PageProps) {
+    const tmp = props.url.href.split('/');
+    console.log(tmp[tmp.length - 1]);
+
+    return (
+      <div>
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css"
+          />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+          <link rel="stylesheet" href="/post.css"></link>
+          <script>hljs.initHighlightingOnLoad();</script>
+        </Head>
+        <MDXContent/>
+      </div>
+    );
+  }
+  
+  

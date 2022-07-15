@@ -5,13 +5,14 @@ export const pageGen = (component: any) => {
   import { tw } from '@twind';
   import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
   import { Head } from '$fresh/runtime.ts';
-  import { Page } from '@/components/Page.tsx';
-  import { Input } from '@/components/Input.tsx';
   import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
 
   ${component}
 
-  export default function Home() {
+  export default function Home(props: PageProps) {
+    const tmp = props.url.href.split('/');
+    console.log(tmp[tmp.length - 1]);
+
     return (
       <div>
         <Head>

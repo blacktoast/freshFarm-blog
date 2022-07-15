@@ -5,5 +5,5 @@ import { tw } from '@twind';
 interface TextProps {}
 
 export const Text = ({}: TextProps) => {
-  return <div></div>;
+  return <div>여기는 테스트입니다</div>;
 };

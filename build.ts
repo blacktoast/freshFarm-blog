@@ -7,6 +7,7 @@ import { ensureFile } from 'https://deno.land/std@0.147.0/fs/mod.ts';
 import gfm from 'https://esm.sh/remark-gfm@3.0.1';
 // import { add } from './Test/bindings/bindings.ts';
 import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
+import rehypeHighlight from 'https://esm.sh/rehype-highlight@5';
 // Open a database
 // Open a database
 
@@ -91,7 +92,7 @@ export const buildMdx = async () => {
 
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
       const encodeFileName = encode(dirEntry.name.split('.')[0]);
-      const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
+      const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.tsx`;
 
       const fileInfo = {
         title: dirEntry.name,
@@ -120,11 +121,14 @@ export const buildMdx = async () => {
       // console.log(dirEntry.name);
 
       await ensureFile(forWriteFileName);
-
+      const exisFileContent = await Deno.readFile(forWriteFileName);
       // console.log(`./routes/blog/${dir}/${encodeFileName}.jsx`);
       const existsFileEditedTime = db[dir][encodeFileName]?.mtime || 0;
 
-      if (String(existsFileEditedTime) !== String(fileInfo.mtime)) {
+      if (
+        String(existsFileEditedTime) !== String(fileInfo.mtime) ||
+        exisFileContent.length === 0
+      ) {
         const compiled = await compile(enterBody, {
           jsxImportSource: 'preact',
           remarkPlugins: [gfm, remarkFrontmatter],
@@ -159,4 +163,4 @@ export const buildMdx = async () => {
   console.timeEnd('mdx build time ');
 };
 
-buildMdx();
+// buildMdx();

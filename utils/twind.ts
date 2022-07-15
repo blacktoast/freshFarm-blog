@@ -6,8 +6,8 @@ export const config: Configuration = {
   darkMode: 'class',
   mode: 'silent',
 
+  // deno-lint-ignore no-dupe-keys
   preflight: (preflight, { theme }) => ({
-    ...preflight,
     html: {
       margin: 0,
       padding: 0,
@@ -16,21 +16,13 @@ export const config: Configuration = {
     svg: {
       display: 'inline',
     },
-
-    pre: {
-      code: {
-        backgroundColor: 'white',
-      },
-    },
+    a: { textDecoration: 'none', outline: 'none' },
 
     code: {
       backgroundColor: 'gray',
       color: 'orange',
     },
-
-    h1: {
-      display: 'inline',
-    },
+    ...preflight,
   }),
 };
 if (IS_BROWSER) setup(config);

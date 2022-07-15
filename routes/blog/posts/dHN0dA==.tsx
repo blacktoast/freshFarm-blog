@@ -27,7 +27,7 @@ function MDXContent(props = {}) {
 }
 
 
-  export default function Home() {
+  export default function Home(props: PageProps) {
     return (
       <div>
         <Head>

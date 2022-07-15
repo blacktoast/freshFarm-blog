@@ -10,7 +10,6 @@
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
 import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
-import CopyCode from "@/islands/CopyCode.tsx";
 function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
   return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
@@ -19,41 +18,20 @@ function MDXContent(props = {}) {
   function _createMdxContent() {
     const _components = Object.assign({
       p: "p",
-      br: "br",
-      pre: "pre",
-      code: "code",
-      a: "a"
+      br: "br"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsxs(_components.p, {
-        children: ["가볼까??", _jsx(_components.br, {}), "\n", "가보자고", _jsx(_components.br, {}), "\n", "가본다고?", _jsx(_components.br, {}), "\n", "aaa"]
-      }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
-        children: _jsx(_components.code, {
-          className: "language-js",
-          children: "let a = test;  \nlet b = test;  \n"
-        })
-      }), "\n", _jsx(_components.p, {
-        children: _jsx(_components.a, {
-          href: "../test",
-          children: "tes"
-        })
-      }), "\n", _jsx(_components.p, {
-        children: "[[test]]"
-      }), "\n", _jsx(_components.p, {
+      children: [_jsx(_components.p, {
         children: "aa"
-      }), "\n", _jsx(_components.p, {
-        children: "사실 그리"
-      }), "\n", _jsx(_components.pre, {
-        children: _jsx(_components.code, {
-          children: "\n\n```  \n\n\n```  \n\n\n```  \n\n\n```  \n"
-        })
+      }), "\n", _jsxs(_components.p, {
+        children: ["[[ㅅㄷㄴ]]", _jsx(_components.br, {}), "\n", "aa"]
       })]
     });
   }
 }
 
 
-  export default function Home() {
+  export default function Home(props: PageProps) {
     return (
       <div>
         <Head>

@@ -10,14 +10,6 @@
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
 import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
-import {Test} from '@/mc/index.ts';
-export const A = () => {
-  return _jsx("div", {
-    children: _jsx("h1", {
-      children: "test"
-    })
-  });
-};
 function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
   return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
@@ -25,26 +17,36 @@ function MDXContent(props = {}) {
   })) : _createMdxContent();
   function _createMdxContent() {
     const _components = Object.assign({
-      h2: "h2",
       p: "p",
       br: "br"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsx(_components.h2, {
-        children: "tset"
-      }), "\n", "\n", "\n", _jsx(A, {}), "\n", _jsx(Test, {}), "\n", _jsxs(_components.p, {
-        children: ["aa 왜 또 안됨? 아 잘되네 흠 좀 반영까지 좀 느린데 실시간 저장이 안되네", _jsx(_components.br, {}), "\n", "흠aa애매한데 결국은 오 나쁘지는 않는데 오호라aa"]
-      }), "\n", _jsx("div", {
-        children: "tet"
+      children: [_jsxs(_components.p, {
+        children: ["오 이게 되나?", _jsx(_components.br, {}), "\n", "오 나름 괜찮은듯?"]
+      }), "\n", _jsx(_components.p, {
+        children: "1초 정도 걸리네 흠.."
+      }), "\n", _jsx(_components.p, {
+        children: "이게 2번 돌아서 좀 느리긴 하네ㅁ"
       }), "\n", _jsxs(_components.p, {
-        children: ["아 이거좀 귀찬흥ㄴ데", _jsx(_components.br, {}), "\n", "aa"]
+        children: ["css도 가끔 튀네 흠.", _jsx(_components.br, {}), "\n", "왜 css는 가끔 튀는거지??", _jsx(_components.br, {}), "\n", "나쁘진 않는데 왜 css 가 가끔 튀는거지?? 흠aa애매한데", _jsx(_components.br, {}), "\n", "왜일까"]
+      }), "\n", _jsxs(_components.p, {
+        children: [_jsx("span", {
+          style: {
+            backgroundColor: 'red'
+          },
+          children: "test "
+        }), " css도 잘먹네 후 그러면 이제", _jsx(_components.br, {}), "\n", "남은게 뭐가 남았지??"]
+      }), "\n", _jsx(_components.p, {
+        children: "좀 느린데 왜 이러지??실시간 반응성은 좀 구리네 흠"
+      }), "\n", _jsx(_components.p, {
+        children: "아니왜 이럼?"
       })]
     });
   }
 }
 
 
-  export default function Home() {
+  export default function Home(props: PageProps) {
     return (
       <div>
         <Head>
