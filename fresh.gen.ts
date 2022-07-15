@@ -6,15 +6,20 @@ import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/api/joke.ts";
 import * as $2 from "./routes/api/test.ts";
 import * as $3 from "./routes/blog.tsx";
-import * as $4 from "./routes/blog/notes/dGVzdA==.jsx";
-import * as $5 from "./routes/blog/posts/7ZWY7J20.jsx";
-import * as $6 from "./routes/blog/posts/Y2M=.jsx";
-import * as $7 from "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx";
-import * as $8 from "./routes/blog/posts/dGVzdA==.jsx";
-import * as $9 from "./routes/blog/posts/dHN0dA==.jsx";
-import * as $10 from "./routes/blog/posts/dHg=.jsx";
-import * as $11 from "./routes/index.tsx";
-import * as $12 from "./routes/test.ts";
+import * as $4 from "./routes/blog/Test.tsx";
+import * as $5 from "./routes/blog/notes/dGVzdA==.jsx";
+import * as $6 from "./routes/blog/posts/7ZWY7J20.jsx";
+import * as $7 from "./routes/blog/posts/Y2M=.jsx";
+import * as $8 from "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx";
+import * as $9 from "./routes/blog/posts/[name].tsx";
+import * as $10 from "./routes/blog/posts/dGVzdA==.jsx";
+import * as $11 from "./routes/blog/posts/dHN0dA==.jsx";
+import * as $12 from "./routes/blog/posts/dHg=.jsx";
+import * as $13 from "./routes/index.tsx";
+import * as $14 from "./routes/notes.tsx";
+import * as $15 from "./routes/post.tsx";
+import * as $16 from "./routes/tags/[name].tsx";
+import * as $17 from "./routes/test.ts";
 import * as $$0 from "./islands/CopyCode.tsx";
 import * as $$1 from "./islands/Counter.tsx";
 import * as $$2 from "./islands/Input.tsx";
@@ -26,16 +31,21 @@ const manifest = {
     "./routes/api/joke.ts": $1,
     "./routes/api/test.ts": $2,
     "./routes/blog.tsx": $3,
-    "./routes/blog/notes/dGVzdA==.jsx": $4,
-    "./routes/blog/posts/7ZWY7J20.jsx": $5,
-    "./routes/blog/posts/Y2M=.jsx": $6,
+    "./routes/blog/Test.tsx": $4,
+    "./routes/blog/notes/dGVzdA==.jsx": $5,
+    "./routes/blog/posts/7ZWY7J20.jsx": $6,
+    "./routes/blog/posts/Y2M=.jsx": $7,
     "./routes/blog/posts/ZnJlc2gg66GcIOqwnOuwnCDruJTroZzqt7gg6rWs7ZiE6riw.jsx":
-      $7,
-    "./routes/blog/posts/dGVzdA==.jsx": $8,
-    "./routes/blog/posts/dHN0dA==.jsx": $9,
-    "./routes/blog/posts/dHg=.jsx": $10,
-    "./routes/index.tsx": $11,
-    "./routes/test.ts": $12,
+      $8,
+    "./routes/blog/posts/[name].tsx": $9,
+    "./routes/blog/posts/dGVzdA==.jsx": $10,
+    "./routes/blog/posts/dHN0dA==.jsx": $11,
+    "./routes/blog/posts/dHg=.jsx": $12,
+    "./routes/index.tsx": $13,
+    "./routes/notes.tsx": $14,
+    "./routes/post.tsx": $15,
+    "./routes/tags/[name].tsx": $16,
+    "./routes/test.ts": $17,
   },
   islands: {
     "./islands/CopyCode.tsx": $$0,

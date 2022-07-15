@@ -1,13 +1,12 @@
-import { pageGen } from "./pagegen.tsx";
-import { compile, run, evaluate } from "mdx2";
+import { pageGen } from './pagegen.tsx';
+import { compile } from 'mdx2';
 
-import { decode, encode } from "base64";
+import { encode } from 'base64';
 
-import { exists, ensureFile } from "https://deno.land/std@0.147.0/fs/mod.ts";
-import gfm from "https://esm.sh/remark-gfm@3.0.1";
+import { ensureFile } from 'https://deno.land/std@0.147.0/fs/mod.ts';
+import gfm from 'https://esm.sh/remark-gfm@3.0.1';
 // import { add } from './Test/bindings/bindings.ts';
-import * as preactJsx from "https://esm.sh/preact@10.9.0/jsx-runtime";
-import remarkFrontmatter from "https://esm.sh/remark-frontmatter@4?bundle";
+import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
 // Open a database
 // Open a database
 
@@ -18,14 +17,14 @@ const metaTagParsing = (rawTexts: string[]) => {
   let flag = false;
   let tags: string[] = [];
   rawTexts.map((text) => {
-    if (text === "---" || text.slice(0, 3) === "---") {
+    if (text === '---' || text.slice(0, 3) === '---') {
       flag = !flag;
     }
     if (flag) {
-      const splitBlocks = text.split(":");
-      if (splitBlocks[0] === "tags") {
+      const splitBlocks = text.split(':');
+      if (splitBlocks[0] === 'tags') {
         tags = splitBlocks[1]
-          .split("#")
+          .split('#')
           .slice(1)
           .map((a) => a.trim());
       }
@@ -37,32 +36,32 @@ const metaTagParsing = (rawTexts: string[]) => {
 const hardEnter = (rawTexts: string[]) => {
   const a = rawTexts
     .map((text) => {
-      if (text.length === 0) return "\n";
+      if (text.length === 0) return '\n';
       else return `${text}  `;
     })
-    .join("\n");
+    .join('\n');
   return a;
 };
 
 const removeExportCodeToComplied = (compiled: string) => {
   return compiled
-    .split("\n")
+    .split('\n')
     .filter((line) => {
-      return line !== "export default MDXContent;";
+      return line !== 'export default MDXContent;';
     })
-    .join("\n");
+    .join('\n');
 };
 interface newDB {
   [key: string]: object;
 }
 export const buildMdx = async () => {
-  const baseDir = "blog";
-  console.time("mdx build time ");
-  const dirs = ["posts", "notes"];
+  const baseDir = 'blog';
+  console.time('mdx build time ');
+  const dirs = ['posts', 'notes'];
   await ensureFile(`./mdxIndex.json`);
   let newDB: newDB = {};
 
-  let db = JSON.parse(await Deno.readTextFile("./mdxIndex.json"));
+  let db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
 
   const fileNames: any = {
     posts: [],
@@ -72,7 +71,7 @@ export const buildMdx = async () => {
     const path = `./${baseDir}/${dir}`;
 
     const dirObj = {
-      [dir]: "",
+      [dir]: '',
     };
 
     // mdx파일의 데이터 값을 가져오기
@@ -85,17 +84,17 @@ export const buildMdx = async () => {
     for await (const dirEntry of Deno.readDir(path)) {
       const readFileName = `${path}/${dirEntry.name}`;
       const body = await Deno.readTextFile(`${path}/${dirEntry.name}`);
-      const rawTexts = body.split("\n");
+      const rawTexts = body.split('\n');
       const tags = metaTagParsing(rawTexts);
 
       const enterBody = hardEnter(rawTexts);
 
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
-      const encodeFileName = encode(dirEntry.name.split(".")[0]);
+      const encodeFileName = encode(dirEntry.name.split('.')[0]);
       const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
 
       const fileInfo = {
-        title: dirEntry,
+        title: dirEntry.name,
         tags,
         path: forWriteFileName,
         atime: fileStat.atime,
@@ -127,7 +126,7 @@ export const buildMdx = async () => {
 
       if (String(existsFileEditedTime) !== String(fileInfo.mtime)) {
         const compiled = await compile(enterBody, {
-          jsxImportSource: "preact",
+          jsxImportSource: 'preact',
           remarkPlugins: [gfm, remarkFrontmatter],
         });
 
@@ -155,9 +154,9 @@ export const buildMdx = async () => {
   });
 
   await Promise.all(removeFilePromises);
-  console.log("end");
+  console.log('end');
 
-  console.timeEnd("mdx build time ");
+  console.timeEnd('mdx build time ');
 };
 
 buildMdx();

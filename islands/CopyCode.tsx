@@ -9,7 +9,7 @@ const CopyCode = ({}: CopyCodeProps) => {
   const testRef = useRef(null);
   const copyCode = () => {
     alert(testRef.current);
-    console.log(testRef.current.nextSibling.nextSibling.innerText);
+    console.log(testRef.current?.nextSibling.nextSibling.innerText || "");
   };
   return (
     <div ref={testRef} class={tw`relative`}>
