@@ -5,7 +5,7 @@ export * from 'twind';
 export const config: Configuration = {
   darkMode: 'class',
   mode: 'silent',
-
+  preflight: false,
   // deno-lint-ignore no-dupe-keys
 };
 if (IS_BROWSER) setup(config);

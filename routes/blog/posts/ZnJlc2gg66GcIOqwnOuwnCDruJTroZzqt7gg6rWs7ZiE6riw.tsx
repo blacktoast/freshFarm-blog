@@ -25,10 +25,8 @@ function MDXContent(props = {}) {
       h2: "h2"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsx(_components.p, {
-        children: "#임시메모"
-      }), "\n", _jsxs(_components.p, {
-        children: ["aa 오 나쁘지 않는데a", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯aaa", _jsx(_components.br, {}), "\n", "aaaa", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자aaaaaaaa"]
+      children: [_jsxs(_components.p, {
+        children: ["aa 그랟 말이지", _jsx(_components.br, {}), "\n", "a", _jsx(_components.br, {}), "\n", "그렇게 큰 문제는 아니지만 흠", _jsx(_components.br, {}), "\n", "aa 오 나쁘지 않는데a", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯aaa", _jsx(_components.br, {}), "\n", "aaaa", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자aaaaaaaa"]
       }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
@@ -79,10 +77,6 @@ function MDXContent(props = {}) {
         children: ["천줄 넘어가는 파일이 20개 정도 있으니깐 시간이 1초 정도 걸린다 흠", _jsx(_components.br, {}), "\n", "전체 파일을 다 빌드를 돌려서 발생하는 문에 인듯 하다."]
       }), "\n", _jsx(_components.p, {
         children: "해서 만약 sqlite를 fresh에서 가능할까 했는데 안되네"
-      }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
-        children: _jsx(_components.code, {
-          children: "  \n"
-        })
       })]
     });
   }

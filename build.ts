@@ -8,24 +8,30 @@ import gfm from 'https://esm.sh/remark-gfm@3.0.1';
 import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
 
 // 태그 파싱, 작업중
+
 const metaTagParsing = (rawTexts: string[]) => {
   let flag = false;
   let tags: string[] = [];
+  let description = '';
   rawTexts.map((text) => {
     if (text === '---' || text.slice(0, 3) === '---') {
       flag = !flag;
     }
     if (flag) {
       const splitBlocks = text.split(':');
-      if (splitBlocks[0] === 'tags') {
+      const keyword = splitBlocks[0];
+      if (keyword === 'tags') {
         tags = splitBlocks[1]
           .split('#')
           .slice(1)
           .map((a) => a.trim());
       }
+      if (keyword === 'description') {
+        description = splitBlocks[1].trim();
+      }
     }
   });
-  return tags;
+  return [tags, description];
 };
 
 const hardEnter = (rawTexts: string[]) => {
@@ -98,10 +104,8 @@ export const buildMdx = async () => {
       const readFileName = `${path}/${dirEntry.name}`;
       const body = await Deno.readTextFile(`${path}/${dirEntry.name}`);
       const rawTexts = body.split('\n');
-      const tags = metaTagParsing(rawTexts);
-
-      const enterBody = hardEnter(rawTexts);
-      console.log(enterBody);
+      const [tags, description] = metaTagParsing(rawTexts);
+      console.log(tags, description);
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
       const encodeFileName = encode(dirEntry.name.split('.')[0]);
       const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.tsx`;
@@ -109,6 +113,7 @@ export const buildMdx = async () => {
       const fileInfo = {
         title: dirEntry.name,
         tags,
+        description,
         path: forWriteFileName,
         atime: fileStat.atime,
         mtime: Date.parse(fileStat.mtime || new Date()),
@@ -141,6 +146,8 @@ export const buildMdx = async () => {
         String(existsFileEditedTime) !== String(fileInfo.mtime) ||
         exisFileContent.length === 0
       ) {
+        const enterBody = hardEnter(rawTexts);
+
         const compiled = await compile(enterBody, {
           jsxImportSource: 'preact',
           remarkPlugins: [gfm, remarkFrontmatter],
@@ -149,7 +156,6 @@ export const buildMdx = async () => {
         const page = pageGen(
           removeExportCodeToComplied(String(compiled.value))
         );
-        console.log(page);
         await Deno.writeTextFile(forWriteFileName, page);
       }
 
