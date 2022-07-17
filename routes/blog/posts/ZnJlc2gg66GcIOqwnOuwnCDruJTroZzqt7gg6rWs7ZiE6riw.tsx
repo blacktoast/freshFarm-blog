@@ -28,29 +28,25 @@ function MDXContent(props = {}) {
       children: [_jsx(_components.p, {
         children: "#임시메모"
       }), "\n", _jsxs(_components.p, {
-        children: ["aa 오 나쁘지 않는데", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯a", _jsx(_components.br, {}), "\n", "aaa", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자aaaa"]
+        children: ["aa 오 나쁘지 않는데a", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯aaa", _jsx(_components.br, {}), "\n", "aaaa", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자aaaaaaaa"]
       }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
           children: "큰문제는 없을거에요  \n"
         })
       }), "\n", _jsxs(_components.p, {
-        children: ["이렇다는 건데 흠..", _jsx(_components.br, {}), "\n", "이게 맞나??", _jsx(_components.br, {}), "\n", "애매..하단말이지"]
+        children: ["이렇다는 건데 흠..", _jsx(_components.br, {}), "\n", "이게 맞나??", _jsx(_components.br, {}), "\n", "애매..하단말이지", _jsx(_components.br, {}), "\n", "a", _jsx(_components.br, {}), "\n", "결국에는 흠aa애매한데", _jsx(_components.br, {}), "\n", "ㅁㅁㅁaa", _jsx(_components.br, {}), "\n", "결국에는", _jsx(_components.br, {}), "\n", "이게 시간이 걸린단 말이지a"]
       }), "\n", _jsxs(_components.p, {
-        children: ["결국에는 흠aa애매한데", _jsx(_components.br, {}), "\n", "ㅁㅁㅁ", _jsx(_components.br, {}), "\n", "결국에는", _jsx(_components.br, {}), "\n", "이게 시간이 걸린단 말이지"]
-      }), "\n", _jsxs(_components.p, {
-        children: ["흠 애매 하단 말이지", _jsx(_components.br, {}), "\n", _jsx(_components.code, {
+        children: ["흠 애매 하단 말이지a", _jsx(_components.br, {}), "\n", _jsx(_components.code, {
           children: "그래"
         }), " 잘해 보자", _jsx(_components.br, {}), "\n", "z", _jsx(_components.br, {}), "\n", "a"]
       }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
-          children: "let a = 'test';  \n \nlet c = 'test2';  \n"
+          children: "let c = 'test2';  \n"
         })
-      }), "\n", _jsx(_components.p, {
-        children: "오올"
-      }), "\n", _jsx(_components.p, {
-        children: "aa"
+      }), "\n", _jsxs(_components.p, {
+        children: ["오올", _jsx(_components.br, {}), "\n", "aa", _jsx(_components.br, {}), "\n", "aa"]
       }), "\n", _jsx(_components.h1, {
         children: "결국 그런거지aa"
       }), "\n", _jsx(Text, {}), "\n", _jsxs(_components.p, {
@@ -83,6 +79,10 @@ function MDXContent(props = {}) {
         children: ["천줄 넘어가는 파일이 20개 정도 있으니깐 시간이 1초 정도 걸린다 흠", _jsx(_components.br, {}), "\n", "전체 파일을 다 빌드를 돌려서 발생하는 문에 인듯 하다."]
       }), "\n", _jsx(_components.p, {
         children: "해서 만약 sqlite를 fresh에서 가능할까 했는데 안되네"
+      }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
+        children: _jsx(_components.code, {
+          children: "  \n"
+        })
       })]
     });
   }

@@ -36,8 +36,8 @@ const metaTagParsing = (rawTexts: string[]) => {
 
 const hardEnter = (rawTexts: string[]) => {
   let isCodeBlock = false;
-
-  const a = rawTexts
+  let alreadyCodeBlockDeclare = false;
+  return rawTexts
     .map((text) => {
       const reqForPasing = /```/;
       if (reqForPasing.test(text)) {
@@ -45,7 +45,12 @@ const hardEnter = (rawTexts: string[]) => {
           isCodeBlock = true;
           const codeFileName = text.split(' ')[1];
           // console.log(codeFileName);
-          const result = `<CopyCode /> \n ${text}`;
+          let result = ``;
+          if (!alreadyCodeBlockDeclare) {
+            result += `import CopyCode from '@/islands/CopyCode.tsx';\n\n<CopyCode />\n\n${text}`;
+            alreadyCodeBlockDeclare = true;
+          } else result += `<CopyCode />\n\n${text}`;
+
           return result;
         }
         if (isCodeBlock) isCodeBlock = false;
@@ -55,7 +60,6 @@ const hardEnter = (rawTexts: string[]) => {
       else return `${text}  `;
     })
     .join('\n');
-  return a;
 };
 
 const mdxParsingForCodeBlock = () => {};
@@ -103,7 +107,7 @@ export const buildMdx = async () => {
       const tags = metaTagParsing(rawTexts);
 
       const enterBody = hardEnter(rawTexts);
-
+      console.log(enterBody);
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
       const encodeFileName = encode(dirEntry.name.split('.')[0]);
       const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.tsx`;
