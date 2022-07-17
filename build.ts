@@ -35,14 +35,32 @@ const metaTagParsing = (rawTexts: string[]) => {
 };
 
 const hardEnter = (rawTexts: string[]) => {
+  let isCodeBlock = false;
+
   const a = rawTexts
     .map((text) => {
-      if (text.length === 0) return '\n';
+      const reqForPasing = /```/;
+      if (reqForPasing.test(text)) {
+        if (!isCodeBlock) {
+          isCodeBlock = true;
+          const codeFileName = text.split(' ')[1];
+          // console.log(codeFileName);
+          const result = `<CopyCode /> \n ${text}`;
+          return result;
+        }
+        if (isCodeBlock) isCodeBlock = false;
+      }
+
+      if (text.length === 0 && !isCodeBlock) return '\n';
       else return `${text}  `;
     })
     .join('\n');
   return a;
 };
+
+const mdxParsingForCodeBlock = () => {};
+
+//mdx파일을 읽어서
 
 const removeExportCodeToComplied = (compiled: string) => {
   return compiled
@@ -62,7 +80,7 @@ export const buildMdx = async () => {
   await ensureFile(`./mdxIndex.json`);
   let newDB: newDB = {};
 
-  let db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
+  const db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
 
   const fileNames: any = {
     posts: [],
@@ -70,10 +88,6 @@ export const buildMdx = async () => {
   };
   const promises = dirs.map(async (dir) => {
     const path = `./${baseDir}/${dir}`;
-
-    const dirObj = {
-      [dir]: '',
-    };
 
     // mdx파일의 데이터 값을 가져오기
     // 해당 파일로 있는 jsx파일이 있는지 찾기
@@ -102,7 +116,7 @@ export const buildMdx = async () => {
         mtime: Date.parse(fileStat.mtime || new Date()),
         birthtime: fileStat.birthtime,
       };
-      console.log(fileInfo);
+      // console.log(fileInfo);
       fileNames[dir].push(encodeFileName);
 
       newDB = {

@@ -9,6 +9,7 @@
   /*@jsxRuntime automatic @jsxImportSource preact*/
 import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
 import {Test, Text} from '@/mc/index.ts';
+import CopyCode from '@/islands/CopyCode.tsx';
 function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
   return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
@@ -24,9 +25,11 @@ function MDXContent(props = {}) {
       h2: "h2"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsxs(_components.p, {
-        children: ["#임시메모", _jsx(_components.br, {}), "\n", "aa 오 나쁘지 않는데", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯", _jsx(_components.br, {}), "\n", "a", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자"]
-      }), "\n", _jsx(_components.pre, {
+      children: [_jsx(_components.p, {
+        children: "#임시메모"
+      }), "\n", _jsxs(_components.p, {
+        children: ["aa 오 나쁘지 않는데", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯a", _jsx(_components.br, {}), "\n", "aaa", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자aaaa"]
+      }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
           children: "큰문제는 없을거에요  \n"
@@ -38,20 +41,24 @@ function MDXContent(props = {}) {
       }), "\n", _jsxs(_components.p, {
         children: ["흠 애매 하단 말이지", _jsx(_components.br, {}), "\n", _jsx(_components.code, {
           children: "그래"
-        }), " 잘해 보자"]
-      }), "\n", _jsx(_components.pre, {
+        }), " 잘해 보자", _jsx(_components.br, {}), "\n", "z", _jsx(_components.br, {}), "\n", "a"]
+      }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
-          children: "let a = 'test';  \n"
+          children: "let a = 'test';  \n \nlet c = 'test2';  \n"
         })
+      }), "\n", _jsx(_components.p, {
+        children: "오올"
+      }), "\n", _jsx(_components.p, {
+        children: "aa"
       }), "\n", _jsx(_components.h1, {
-        children: "결국 그런거지"
+        children: "결국 그런거지aa"
       }), "\n", _jsx(Text, {}), "\n", _jsxs(_components.p, {
         children: ["gfm을 하려고 했으나 ", _jsx(_components.code, {
           children: "\\n"
         }), " 이 개행이 안됨 해서 다른 마크다운 파서를 찾다가 markdown-it", _jsx(_components.br, {}), "\n", "파서 발견aas"]
-      }), "\n", _jsx(_components.p, {
-        children: "이걸로 가자"
+      }), "\n", _jsxs(_components.p, {
+        children: ["이걸로 가자", _jsx(_components.br, {}), "\n", "aa"]
       }), "\n", _jsx(_components.h1, {
         children: "기능 구현"
       }), "\n", _jsxs(_components.p, {
