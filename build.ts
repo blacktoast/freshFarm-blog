@@ -5,13 +5,7 @@ import { encode } from 'base64';
 
 import { ensureFile } from 'https://deno.land/std@0.147.0/fs/mod.ts';
 import gfm from 'https://esm.sh/remark-gfm@3.0.1';
-// import { add } from './Test/bindings/bindings.ts';
 import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
-import rehypeHighlight from 'https://esm.sh/rehype-highlight@5';
-// Open a database
-// Open a database
-
-// Run a simple query
 
 // 태그 파싱, 작업중
 const metaTagParsing = (rawTexts: string[]) => {
