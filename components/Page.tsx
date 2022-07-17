@@ -1,9 +1,19 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, Fragment, ComponentChildren } from 'preact';
 import { tw } from '@twind';
+import { Head } from '$fresh/runtime.ts';
 
-interface Page2Props {}
+interface Page2Props {
+  children: ComponentChildren;
+}
 
-export const Page = ({}: Page2Props) => {
-  return <div>가보자고</div>;
+export const Page = ({ children }: Page2Props) => {
+  return (
+    <Fragment>
+      <Head>
+        <link rel="stylesheet" href="/post.css"></link>
+      </Head>
+      {children}
+    </Fragment>
+  );
 };

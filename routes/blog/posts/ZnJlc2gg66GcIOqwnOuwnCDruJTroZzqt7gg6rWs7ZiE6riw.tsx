@@ -18,15 +18,19 @@ function MDXContent(props = {}) {
   function _createMdxContent() {
     const _components = Object.assign({
       p: "p",
+      code: "code",
       br: "br",
       pre: "pre",
-      code: "code",
       h1: "h1",
       h2: "h2"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsxs(_components.p, {
-        children: ["aa 그랟 말이지", _jsx(_components.br, {}), "\n", "a", _jsx(_components.br, {}), "\n", "그렇게 큰 문제는 아니지만 흠", _jsx(_components.br, {}), "\n", "aa 오 나쁘지 않는데a", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯aaa", _jsx(_components.br, {}), "\n", "aaaa", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자aaaaaaaa"]
+      children: [_jsx(_components.p, {
+        children: "aa 그랟 말이지"
+      }), "\n", _jsxs(_components.p, {
+        children: [_jsx(_components.code, {
+          children: "test"
+        }), "이건?", _jsx(_components.br, {}), "\n", "a", _jsx(_components.br, {}), "\n", "그렇게 큰 문제는 아니지만 흠", _jsx(_components.br, {}), "\n", "aa 오 나쁘지 않는데a", _jsx(_components.br, {}), "\n", "그래서 결국 흠 이렇게 될거라는 거지?aa", _jsx(_components.br, {}), "\n", "라는 거지 흠 나쁘지는 않는데", _jsx(_components.br, {}), "\n", "아 해결된듯aaa", _jsx(_components.br, {}), "\n", "aaaa", _jsx(_components.br, {}), "\n", "아아 애매한데", _jsx(_components.br, {}), "\n", "사용자aaaaaaaa"]
       }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",

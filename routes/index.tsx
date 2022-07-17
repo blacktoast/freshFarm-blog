@@ -6,6 +6,8 @@ import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import Input from '@/islands/Input.tsx';
 import { useState } from 'preact/hooks';
 import { Header } from '@/components/Header.tsx';
+import { Page } from '@/components/index.ts';
+
 import CopyCode from '@/islands/CopyCode.tsx';
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
@@ -29,10 +31,14 @@ export default function Home() {
 
   return (
     <Fragment>
-      <Header></Header>
-      <main>
-        <div class={tw`lg:max-w-screen-md px-6 pt-8 mx-auto`}>testtesttest</div>
-      </main>
+      <Page>
+        <Header></Header>
+        <main>
+          <div class={tw`lg:max-w-screen-md px-6 pt-8 mx-auto`}>
+            testtesttest
+          </div>
+        </main>
+      </Page>
     </Fragment>
   );
 }
