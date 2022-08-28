@@ -116,10 +116,10 @@ export const buildMdx = async () => {
         description,
         path: forWriteFileName,
         atime: fileStat.atime,
-        mtime: Date.parse(fileStat.mtime || new Date()),
+        mtime: Date.parse(String(fileStat.mtime) || String(new Date())),
         birthtime: fileStat.birthtime,
       };
-      // console.log(fileInfo);
+
       fileNames[dir].push(encodeFileName);
 
       newDB = {
