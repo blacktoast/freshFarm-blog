@@ -16,14 +16,16 @@ function MDXContent(props = {}) {
   })) : _createMdxContent();
   function _createMdxContent() {
     const _components = Object.assign({
+      p: "p",
       pre: "pre",
       code: "code",
-      p: "p",
       br: "br",
       a: "a"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
+      children: [_jsx(_components.p, {
+        children: "ㅅㄷㄴㅅ"
+      }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
           children: "let a = test;  \ns;  \nlet b = test;  \n"
