@@ -24,7 +24,7 @@ function MDXContent(props = {}) {
     }, props.components);
     return _jsxs(_Fragment, {
       children: [_jsx(_components.p, {
-        children: "ㅅㄷㄴㅅ"
+        children: "ㅅㄷㄴㅅaaa"
       }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
