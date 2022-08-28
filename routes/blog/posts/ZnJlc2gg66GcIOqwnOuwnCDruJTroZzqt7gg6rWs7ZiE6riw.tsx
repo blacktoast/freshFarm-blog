@@ -26,7 +26,7 @@ function MDXContent(props = {}) {
     }, props.components);
     return _jsxs(_Fragment, {
       children: [_jsx(_components.p, {
-        children: "aa 그랟 말이지"
+        children: "aa 그랟 말이지 흠 나쁘지는 않지만시간이 꽤 걸리긶 나ㅔ"
       }), "\n", _jsxs(_components.p, {
         children: [_jsx(_components.code, {
           children: "test"

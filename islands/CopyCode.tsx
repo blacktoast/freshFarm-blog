@@ -1,19 +1,20 @@
 /** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
-import { useRef } from "preact/hooks";
+import { h } from 'preact';
+import { tw } from '@twind';
+import { useRef } from 'preact/hooks';
 
 interface CopyCodeProps {}
 
 const CopyCode = ({}: CopyCodeProps) => {
-  const testRef = useRef(null);
+  const ref = useRef<HTMLParagraphElement>(null);
   const copyCode = () => {
-    alert(testRef.current);
-    console.log(testRef.current?.nextSibling.nextSibling.innerText || "");
+    const targetDom: HTMLParagraphElement = ref.current?.nextSibling
+      ?.nextSibling as HTMLParagraphElement;
+    console.log(targetDom.innerText);
   };
   return (
-    <div ref={testRef} class={tw`relative`}>
-      <code onClick={copyCode} class={tw`absolute top-0 right-0`}>
+    <div ref={ref} class={tw`relative`}>
+      <code onClick={copyCode} class={tw`code-copy-btn absolute top-0 right-0`}>
         여기는 코드 복사 버튼
       </code>
     </div>
