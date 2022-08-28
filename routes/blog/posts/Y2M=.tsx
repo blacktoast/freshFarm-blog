@@ -16,26 +16,17 @@ function MDXContent(props = {}) {
   })) : _createMdxContent();
   function _createMdxContent() {
     const _components = Object.assign({
-      p: "p",
-      br: "br",
       pre: "pre",
       code: "code",
-      span: "span",
+      p: "p",
+      br: "br",
       a: "a"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsxs(_components.p, {
-        children: ["가볼까??", _jsx(_components.br, {}), "\n", "가보자고", _jsx(_components.br, {}), "\n", "가본다고?", _jsx(_components.br, {}), "\n", "aaa"]
-      }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
-        children: _jsxs(_components.code, {
-          className: "hljs language-js",
-          children: [_jsx(_components.span, {
-            className: "hljs-keyword",
-            children: "let"
-          }), " a = test;  \ns;  \n", _jsx(_components.span, {
-            className: "hljs-keyword",
-            children: "let"
-          }), " b = test;  \n"]
+      children: [_jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
+        children: _jsx(_components.code, {
+          className: "language-js",
+          children: "let a = test;  \ns;  \nlet b = test;  \n"
         })
       }), "\n", _jsxs(_components.p, {
         children: ["daf", _jsx(_components.br, {}), "\n", "agdd"]
@@ -50,28 +41,9 @@ function MDXContent(props = {}) {
         children: "aa"
       }), "\n", _jsx(_components.p, {
         children: "사실 그리"
-      }), "\n", _jsx(_components.pre, {
-        children: _jsxs(_components.code, {
-          className: "hljs language-go",
-          children: ["\n\n", _jsx(_components.span, {
-            className: "hljs-string",
-            children: "``"
-          }), _jsx(_components.span, {
-            className: "hljs-string",
-            children: "`  \n\n\n`"
-          }), _jsx(_components.span, {
-            className: "hljs-string",
-            children: "``"
-          }), "  \n\n\n", _jsx(_components.span, {
-            className: "hljs-string",
-            children: "``"
-          }), _jsx(_components.span, {
-            className: "hljs-string",
-            children: "`  \n\n\n`"
-          }), _jsx(_components.span, {
-            className: "hljs-string",
-            children: "``"
-          }), "  \n"]
+      }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
+        children: _jsx(_components.code, {
+          children: "  \n```  \n\n\n<CopyCode />\n\n```\n  \n```  \n\n\n<CopyCode />\n\n```\n"
         })
       })]
     });

@@ -8,7 +8,7 @@
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
 import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
-import {Test, Text} from '@/mc/index.ts';
+import {Test, Text} from "@/mc/index.ts";
 import CopyCode from '@/islands/CopyCode.tsx';
 function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
@@ -45,7 +45,7 @@ function MDXContent(props = {}) {
       }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
-          children: "let c = 'test2';  \n"
+          children: "let c = \"test2\";  \n"
         })
       }), "\n", _jsxs(_components.p, {
         children: ["오올", _jsx(_components.br, {}), "\n", "aa", _jsx(_components.br, {}), "\n", "aa"]
@@ -63,7 +63,9 @@ function MDXContent(props = {}) {
         children: [_jsx(Test, {
           children: " 이제는 기능 구현을 거의 완료 했죠 "
         }), "이 css의 문제는 css가 튄다는", _jsx(_components.br, {}), "\n", "점이다 흠aa애매한데"]
-      }), "\n", _jsx(Text, {}), "\n", _jsx(_components.p, {
+      }), "\n", _jsxs(_components.p, {
+        children: ["그렇다는건", _jsx(_components.br, {}), "\n", "흥미롭다는 말이죠"]
+      }), "\n", _jsx(_components.p, {
         children: "애바지 에바야 흠"
       }), "\n", _jsx(_components.h2, {
         children: "태그기반 구현"
