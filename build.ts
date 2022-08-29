@@ -108,7 +108,7 @@ export const buildMdx = async () => {
       console.log(tags, description);
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
       const encodeFileName = encode(dirEntry.name.split('.')[0]);
-      const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.tsx`;
+      const forWriteFileName = `./routes/blog/${dir}/${encodeFileName}.jsx`;
 
       const fileInfo = {
         title: dirEntry.name,

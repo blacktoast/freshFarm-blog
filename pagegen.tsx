@@ -3,13 +3,12 @@ export const pageGen = (component: any) => {
   /** @jsx h */
   import { h } from 'preact';
   import { tw } from '@twind';
-  import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
   import { Head } from '$fresh/runtime.ts';
-  import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
+  import { Page } from '@/components/index.ts';
 
   ${component}
 
-  export default function Home(props: PageProps) {
+  export default function Home(props) {
     const tmp = props.url.href.split('/');
     console.log(tmp[tmp.length - 1]);
 
@@ -24,7 +23,9 @@ export const pageGen = (component: any) => {
           <link rel="stylesheet" href="/post.css"></link>
           <script>hljs.initHighlightingOnLoad();</script>
         </Head>
-        <MDXContent/>
+        <Page>
+          <MDXContent/>
+        </Page>
       </div>
     );
   }
