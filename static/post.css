@@ -4,9 +4,16 @@
   font-family: 'Noto Sans KR', sans-serif;
 }
 
+body {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
 p {
   font-size: 1rem;
 }
+
 code {
   background-color: #02343f;
   color: #f0edcc;
@@ -17,11 +24,12 @@ code {
 a {
   text-decoration: none;
   outline: none;
+  color: black;
 }
 
 a:hover,
 a:active {
   text-decoration: none;
   color: #fff;
-  background-color: #f59000;
+  transition: color 0.3s ease-out;
 }
