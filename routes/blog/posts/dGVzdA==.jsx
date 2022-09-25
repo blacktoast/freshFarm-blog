@@ -2,9 +2,8 @@
   /** @jsx h */
   import { h } from 'preact';
   import { tw } from '@twind';
-  import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
   import { Head } from '$fresh/runtime.ts';
-  import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
+  import { Page } from '@/components/index.ts';
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
 import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
@@ -17,35 +16,19 @@ function MDXContent(props = {}) {
   function _createMdxContent() {
     const _components = Object.assign({
       p: "p",
-      pre: "pre",
-      code: "code",
       br: "br",
-      a: "a"
+      pre: "pre",
+      code: "code"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsx(_components.p, {
-        children: "ㅅㄷㄴㅅaaa"
+      children: [_jsxs(_components.p, {
+        children: ["test", _jsx(_components.br, {}), "\n", "ㅁ"]
+      }), "\n", _jsx(_components.p, {
+        children: "aaaa"
       }), "\n", "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
-          children: "let a = test;  \ns;  \nlet b = test;  \n"
-        })
-      }), "\n", _jsxs(_components.p, {
-        children: ["daf", _jsx(_components.br, {}), "\n", "agdd"]
-      }), "\n", _jsx(_components.p, {
-        children: _jsx(_components.a, {
-          href: "../test",
-          children: "tes"
-        })
-      }), "\n", _jsx(_components.p, {
-        children: "[[test]]"
-      }), "\n", _jsx(_components.p, {
-        children: "aa"
-      }), "\n", _jsx(_components.p, {
-        children: "사실 그리"
-      }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
-        children: _jsx(_components.code, {
-          children: "  \n```  \n\n\n<CopyCode />\n\n```\n  \n```  \n\n\n<CopyCode />\n\n```\n"
+          children: "let a = 'agt';  \n"
         })
       })]
     });
@@ -53,7 +36,7 @@ function MDXContent(props = {}) {
 }
 
 
-  export default function Home(props: PageProps) {
+  export default function Home(props) {
     const tmp = props.url.href.split('/');
     console.log(tmp[tmp.length - 1]);
 
@@ -68,7 +51,9 @@ function MDXContent(props = {}) {
           <link rel="stylesheet" href="/post.css"></link>
           <script>hljs.initHighlightingOnLoad();</script>
         </Head>
-        <MDXContent/>
+        <Page>
+          <MDXContent/>
+        </Page>
       </div>
     );
   }

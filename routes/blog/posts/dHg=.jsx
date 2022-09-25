@@ -14,14 +14,21 @@ function MDXContent(props = {}) {
   })) : _createMdxContent();
   function _createMdxContent() {
     const _components = Object.assign({
+      h2: "h2",
       p: "p",
       br: "br"
     }, props.components);
     return _jsxs(_Fragment, {
-      children: [_jsx(_components.p, {
-        children: "aa"
+      children: [_jsx(_components.h2, {
+        children: "tset"
       }), "\n", _jsxs(_components.p, {
-        children: ["[[ㅅㄷㄴ]]", _jsx(_components.br, {}), "\n", "aa"]
+        children: ["aa 왜 또 안됨? 아 잘되네 흠 좀 반영까지 좀 느린데 실시간 저장이 안되네", _jsx(_components.br, {}), "\n", "흠aa애매한데 결국은 오 나쁘지는 않는데 오호라aa"]
+      }), "\n", _jsxs(_components.p, {
+        children: ["dhfhgk 나쁮진 않는데a", _jsx(_components.br, {}), "\n", "이렇게 되면"]
+      }), "\n", _jsx("div", {
+        children: "tet"
+      }), "\n", _jsxs(_components.p, {
+        children: ["아 이거좀 귀찬흥ㄴ데", _jsx(_components.br, {}), "\n", "aaa"]
       })]
     });
   }

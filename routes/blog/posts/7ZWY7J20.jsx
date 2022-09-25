@@ -2,11 +2,8 @@
   /** @jsx h */
   import { h } from 'preact';
   import { tw } from '@twind';
-  import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
   import { Head } from '$fresh/runtime.ts';
-  import { Page } from '@/components/Page.tsx';
-  import { Input } from '@/components/Input.tsx';
-  import * as jsxP from 'https://esm.sh/preact@10.9.0/jsx-runtime';
+  import { Page } from '@/components/index.ts';
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
 import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
@@ -46,7 +43,10 @@ function MDXContent(props = {}) {
 }
 
 
-  export default function Home(props: PageProps) {
+  export default function Home(props) {
+    const tmp = props.url.href.split('/');
+    console.log(tmp[tmp.length - 1]);
+
     return (
       <div>
         <Head>
@@ -58,7 +58,9 @@ function MDXContent(props = {}) {
           <link rel="stylesheet" href="/post.css"></link>
           <script>hljs.initHighlightingOnLoad();</script>
         </Head>
-        <MDXContent/>
+        <Page>
+          <MDXContent/>
+        </Page>
       </div>
     );
   }
