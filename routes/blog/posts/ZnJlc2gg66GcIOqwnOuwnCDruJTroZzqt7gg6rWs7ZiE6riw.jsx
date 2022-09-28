@@ -1,8 +1,5 @@
 
-  /** @jsx h */
-  import { h } from 'preact';
-  import { tw } from '@twind';
-  import { Head } from '$fresh/runtime.ts';
+      import { Head } from '$fresh/runtime.ts';
   import { Page } from '@/components/index.ts';
 
   /*@jsxRuntime automatic @jsxImportSource preact*/

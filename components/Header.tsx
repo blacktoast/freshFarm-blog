@@ -1,7 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
-import { tw } from '@twind';
-
 interface HeaderProps {
   activeLink?: string;
 }
@@ -23,16 +19,11 @@ export const Header = ({ activeLink = '' }: HeaderProps) => {
 
   return (
     <div
-      class={tw` flex px-8 sticky top-0
-      justify-between rounded-lg h-12 items-center  
-      bg-green backdrop-blur`}
+      class=" flex  px-8 sticky top-0 justify-between rounded-lg h-12 items-center bg-green-100"
       style={{ backdropFilter: 'blur(8px)' }}
     >
       <h2>retto</h2>
-      <div
-        class={tw`hidden sm:flex 
-       gap-4 text-xl items-center `}
-      >
+      <div class="hidden sm:flex gap-4 text-xl items-center ">
         {Object.entries(links).map((link) => {
           const [key, bool] = link;
           console.log(key, bool);
@@ -43,7 +34,7 @@ export const Header = ({ activeLink = '' }: HeaderProps) => {
         <a href="/projects">projects</a>
         <a href="/guestBook">guestBook</a>
       </div>
-      <div class={tw`flex sm:hidden`}> hi </div>
+      <div class="flex sm:hidden"> hi </div>
     </div>
   );
 };

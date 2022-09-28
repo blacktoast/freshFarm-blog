@@ -1,6 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
-import { tw } from '@twind';
 import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';

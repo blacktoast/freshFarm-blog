@@ -1,6 +1,3 @@
-/** @jsx h */
-import { h, Fragment } from 'preact';
-import { tw } from '@twind';
 import Counter from '../islands/Counter.tsx';
 import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
 import Input from '@/islands/Input.tsx';
@@ -15,7 +12,7 @@ export default function Home() {
   };
 
   return (
-    <Fragment>
+    <>
       <div>
         <Header></Header>
         <Page>
@@ -50,6 +47,6 @@ export default function Home() {
           <h1>test</h1>
         </Page>
       </div>
-    </Fragment>
+    </>
   );
 }
