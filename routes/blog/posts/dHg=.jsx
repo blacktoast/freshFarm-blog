@@ -1,5 +1,5 @@
 
-      import { Head } from '$fresh/runtime.ts';
+  import { Head } from '$fresh/runtime.ts';
   import { Page } from '@/components/index.ts';
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
@@ -19,7 +19,7 @@ function MDXContent(props = {}) {
       children: [_jsx(_components.h2, {
         children: "tset"
       }), "\n", _jsxs(_components.p, {
-        children: ["aa 왜 또 안됨? 아 잘되네 흠 좀 반영까지 좀 느린데 실시간 저장이 안되네", _jsx(_components.br, {}), "\n", "흠aa애매한데 결국은 오 나쁘지는 않는데 오호라aa"]
+        children: ["aa 왜 또 안됨? 아 잘되네 흠 좀 반영까지 좀 느린데 실시간 저장이 안되네", _jsx(_components.br, {}), "\n", "흠aa애매한데 결국은 오 나쁘지는 않는데 오호라aa 뭐 그런가지 흠 18ms 라 좀 길긴하네ㅇㅇ"]
       }), "\n", _jsxs(_components.p, {
         children: ["dhfhgk 나쁮진 않는데a", _jsx(_components.br, {}), "\n", "이렇게 되면"]
       }), "\n", _jsx("div", {

@@ -1,10 +1,10 @@
 
-      import { Head } from '$fresh/runtime.ts';
+  import { Head } from '$fresh/runtime.ts';
   import { Page } from '@/components/index.ts';
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
 import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
-import {Test, Text} from "@/mc/index.ts";
+import {Test, Text} from '@/mc/index.ts';
 import CopyCode from '@/islands/CopyCode.tsx';
 function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
@@ -41,7 +41,7 @@ function MDXContent(props = {}) {
       }), "\n", _jsx(CopyCode, {}), "\n", _jsx(_components.pre, {
         children: _jsx(_components.code, {
           className: "language-js",
-          children: "let c = \"test2\";  \n"
+          children: "let c = 'test2';  \nㅇㅇ;  \n"
         })
       }), "\n", _jsxs(_components.p, {
         children: ["오올", _jsx(_components.br, {}), "\n", "aa", _jsx(_components.br, {}), "\n", "aa"]
@@ -77,8 +77,8 @@ function MDXContent(props = {}) {
         children: "mdx -> jsx 빌드 성능 문제"
       }), "\n", _jsxs(_components.p, {
         children: ["천줄 넘어가는 파일이 20개 정도 있으니깐 시간이 1초 정도 걸린다 흠", _jsx(_components.br, {}), "\n", "전체 파일을 다 빌드를 돌려서 발생하는 문에 인듯 하다."]
-      }), "\n", _jsx(_components.p, {
-        children: "해서 만약 sqlite를 fresh에서 가능할까 했는데 안되네"
+      }), "\n", _jsxs(_components.p, {
+        children: ["해서 만약 sqlite를 fresh에서 가능할까 했는데 안되네", _jsx(_components.br, {}), "\n", "이렇게 되니 생각보다 오래걸리는데 흠", _jsx(_components.br, {}), "\n", "흠", _jsx(_components.br, {}), "\n", "아 시간은 뭐 비슷하네", _jsx(_components.br, {}), "\n", "6ms 정도 추가가 되긴 하네 흠gma"]
       })]
     });
   }

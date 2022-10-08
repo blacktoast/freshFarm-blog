@@ -1,9 +1,9 @@
 
-      import { Head } from '$fresh/runtime.ts';
+  import { Head } from '$fresh/runtime.ts';
   import { Page } from '@/components/index.ts';
 
   /*@jsxRuntime automatic @jsxImportSource preact*/
-import {jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
+import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "preact/jsx-runtime";
 function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
   return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
@@ -14,8 +14,14 @@ function MDXContent(props = {}) {
       p: "p",
       br: "br"
     }, props.components);
-    return _jsxs(_components.p, {
-      children: ["test", _jsx(_components.br, {}), "\n", "결국 우리는 이제느", _jsx(_components.br, {}), "\n", "aaa"]
+    return _jsxs(_Fragment, {
+      children: [_jsx(_components.p, {
+        children: "testte"
+      }), "\n", _jsxs(_components.p, {
+        children: ["이러먼 생각보다 긴데", _jsx(_components.br, {}), "\n", "결국 우리는 이제느", _jsx(_components.br, {}), "\n", "aaa", _jsx(_components.br, {}), "\n", "dd"]
+      }), "\n", _jsx(_components.p, {
+        children: "오호라"
+      })]
     });
   }
 }
