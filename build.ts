@@ -1,4 +1,4 @@
-import { pageGen } from './pagegen.tsx';
+import { pageGen } from '@/pagegen.tsx';
 import { compile } from 'mdx2';
 
 import { encode } from 'base64';
@@ -77,6 +77,7 @@ const removeExportCodeToComplied = (compiled: string) => {
 interface newDB {
   [key: string]: object;
 }
+
 export const buildMdx = async () => {
   const baseDir = 'blog';
   console.time('mdx build time ');
