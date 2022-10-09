@@ -1,7 +1,7 @@
-import Counter from '../islands/Counter.tsx';
-import { HandlerContext, Handlers, PageProps } from '$fresh/server.ts';
-import { Head } from '$fresh/runtime.ts';
-import { Page } from '@/components/Page.tsx';
+import Counter from "../islands/Counter.tsx";
+import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { Head } from "$fresh/runtime.ts";
+import { Page } from "@/components/Page.tsx";
 // import Test from "./blog/posts/Yg==.jsx";
 // export const handler: Handlers = {
 //   async GET(_, ctx) {
@@ -50,7 +50,8 @@ export default function Home(props: PageProps) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css"
         />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js">
+        </script>
         <link rel="stylesheet" href="/post.css"></link>
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>

@@ -13,9 +13,9 @@ export default function Home() {
 
   return (
     <>
-      <div>
-        <Header></Header>
-        <Page>
+      <Header></Header>
+      <Page>
+        <div>
           testtesttest
           <h1>test</h1>
           <h1>test</h1>
@@ -45,8 +45,8 @@ export default function Home() {
           <h1>test</h1>
           <h1>test</h1>
           <h1>test</h1>
-        </Page>
-      </div>
+        </div>
+      </Page>
     </>
   );
 }

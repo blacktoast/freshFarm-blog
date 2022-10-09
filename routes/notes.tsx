@@ -1,4 +1,4 @@
-import CopyCode from '@/islands/CopyCode.tsx';
+import CopyCode from "@/islands/CopyCode.tsx";
 
 interface undefinedProps {}
 

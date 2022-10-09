@@ -1,32 +1,32 @@
-import { pageGen } from '@/pagegen.tsx';
-import { compile } from 'mdx2';
+import { pageGen } from "@/pagegen.tsx";
+import { compile } from "mdx2";
 
-import { encode } from 'base64';
+import { encode } from "base64";
 
-import { ensureFile, ensureDir } from 'https://deno.land/std@0.147.0/fs/mod.ts';
-import gfm from 'https://esm.sh/remark-gfm@3.0.1';
-import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
+import { ensureDir, ensureFile } from "https://deno.land/std@0.147.0/fs/mod.ts";
+import gfm from "https://esm.sh/remark-gfm@3.0.1";
+import remarkFrontmatter from "https://esm.sh/remark-frontmatter@4?bundle";
 
 // 태그 파싱, 작업중
 
 const metaTagParsing = (rawTexts: string[]) => {
   let flag = false;
   let tags: string[] = [];
-  let description = '';
+  let description = "";
   rawTexts.map((text) => {
-    if (text === '---' || text.slice(0, 3) === '---') {
+    if (text === "---" || text.slice(0, 3) === "---") {
       flag = !flag;
     }
     if (flag) {
-      const splitBlocks = text.split(':');
+      const splitBlocks = text.split(":");
       const keyword = splitBlocks[0];
-      if (keyword === 'tags') {
+      if (keyword === "tags") {
         tags = splitBlocks[1]
-          .split('#')
+          .split("#")
           .slice(1)
           .map((a) => a.trim());
       }
-      if (keyword === 'description') {
+      if (keyword === "description") {
         description = splitBlocks[1].trim();
       }
     }
@@ -43,11 +43,12 @@ const hardEnter = (rawTexts: string[]) => {
       if (reqForPasing.test(text)) {
         if (!isCodeBlock) {
           isCodeBlock = true;
-          const codeFileName = text.split(' ')[1];
+          const codeFileName = text.split(" ")[1];
           // console.log(codeFileName);
           let result = ``;
           if (!alreadyCodeBlockDeclare) {
-            result += `import CopyCode from '@/islands/CopyCode.tsx';\n\n<CopyCode />\n\n${text}`;
+            result +=
+              `import CopyCode from '@/islands/CopyCode.tsx';\n\n<CopyCode />\n\n${text}`;
             alreadyCodeBlockDeclare = true;
           } else result += `<CopyCode />\n\n${text}`;
 
@@ -56,10 +57,10 @@ const hardEnter = (rawTexts: string[]) => {
         if (isCodeBlock) isCodeBlock = false;
       }
 
-      if (text.length === 0 && !isCodeBlock) return '\n';
+      if (text.length === 0 && !isCodeBlock) return "\n";
       else return `${text}  `;
     })
-    .join('\n');
+    .join("\n");
 };
 
 const mdxParsingForCodeBlock = () => {};
@@ -68,24 +69,24 @@ const mdxParsingForCodeBlock = () => {};
 
 const removeExportCodeToComplied = (compiled: string) => {
   return compiled
-    .split('\n')
+    .split("\n")
     .filter((line) => {
-      return line !== 'export default MDXContent;';
+      return line !== "export default MDXContent;";
     })
-    .join('\n');
+    .join("\n");
 };
 interface newDB {
   [key: string]: object;
 }
 
 export const buildMdx = async () => {
-  const baseDir = 'blog';
-  console.time('mdx build time ');
-  const dirs = ['posts', 'notes'];
+  const baseDir = "blog";
+  console.time("mdx build time ");
+  const dirs = ["posts", "notes"];
   await ensureFile(`./mdxIndex.json`);
   let newDB: newDB = {};
 
-  const db = JSON.parse(await Deno.readTextFile('./mdxIndex.json'));
+  const db = JSON.parse(await Deno.readTextFile("./mdxIndex.json"));
 
   const fileNames: any = {
     posts: [],
@@ -98,11 +99,11 @@ export const buildMdx = async () => {
     for await (const dirEntry of Deno.readDir(path)) {
       const readFileName = `${path}/${dirEntry.name}`;
       const body = await Deno.readTextFile(readFileName);
-      const rawTexts = body.split('\n');
+      const rawTexts = body.split("\n");
       const [tags, description] = metaTagParsing(rawTexts);
       console.log(tags, description);
       const fileStat = await Deno.stat(`${path}/${dirEntry.name}`);
-      const hashedFileName = encode(dirEntry.name.split('.')[0]);
+      const hashedFileName = encode(dirEntry.name.split(".")[0]);
       const forWriteFileName = `./routes/blog/${dir}/${hashedFileName}.jsx`;
 
       const fileInfo = {
@@ -151,12 +152,12 @@ export const buildMdx = async () => {
         const enterBody = hardEnter(rawTexts);
 
         const compiled = await compile(enterBody, {
-          jsxImportSource: 'preact',
+          jsxImportSource: "preact",
           remarkPlugins: [gfm, remarkFrontmatter],
         });
 
         const page = pageGen(
-          removeExportCodeToComplied(String(compiled.value))
+          removeExportCodeToComplied(String(compiled.value)),
         );
         await Deno.writeTextFile(forWriteFileName, page);
       }
@@ -187,9 +188,9 @@ export const buildMdx = async () => {
   await Deno.writeTextFile(`./mdxIndex.json`, JSON.stringify(newDB));
 
   await Promise.all(removeFilePromises);
-  console.log('end');
+  console.log("end");
 
-  console.timeEnd('mdx build time ');
+  console.timeEnd("mdx build time ");
 };
 
 // buildMdx();

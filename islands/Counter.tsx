@@ -1,6 +1,6 @@
-import { useState } from 'preact/hooks';
-import { IS_BROWSER } from '$fresh/runtime.ts';
-import { tw } from 'twind';
+import { useState } from "preact/hooks";
+import { IS_BROWSER } from "$fresh/runtime.ts";
+import { tw } from "twind";
 interface CounterProps {
   start: number;
 }
