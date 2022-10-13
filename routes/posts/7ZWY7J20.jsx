@@ -1,12 +1,12 @@
-import { Head } from "$fresh/runtime.ts";
-import { Page } from "@/components/index.ts";
+import { Head } from '$fresh/runtime.ts';
+import { Page } from '@/components/index.ts';
 
 /*@jsxRuntime automatic @jsxImportSource preact*/
 import {
   Fragment as _Fragment,
   jsx as _jsx,
   jsxs as _jsxs,
-} from "preact/jsx-runtime";
+} from 'preact/jsx-runtime';
 function MDXContent(props = {}) {
   const { wrapper: MDXLayout } = props.components || ({});
   return MDXLayout
@@ -19,59 +19,59 @@ function MDXContent(props = {}) {
     : _createMdxContent();
   function _createMdxContent() {
     const _components = Object.assign({
-      p: "p",
-      br: "br",
+      p: 'p',
+      br: 'br',
     }, props.components);
     return _jsxs(_Fragment, {
       children: [
         _jsxs(_components.p, {
-          children: ["오 이게 되나?", _jsx(_components.br, {}), "\n", "오 나름 괜찮은듯?"],
+          children: ['오 이게 되나?', _jsx(_components.br, {}), '\n', '오 나름 괜찮은듯?'],
         }),
-        "\n",
+        '\n',
         _jsx(_components.p, {
-          children: "1초 정도 걸리네 흠..",
+          children: '1초 정도 걸리네 흠..',
         }),
-        "\n",
+        '\n',
         _jsx(_components.p, {
-          children: "이게 2번 돌아서 좀 느리긴 하네ㅁ",
+          children: '이게 2번 돌아서 좀 느리긴 하네ㅁ',
         }),
-        "\n",
+        '\n',
         _jsxs(_components.p, {
           children: [
-            "css도 가끔 튀네 흠.",
+            'css도 가끔 튀네 흠.',
             _jsx(_components.br, {}),
-            "\n",
-            "왜 css는 가끔 튀는거지??",
+            '\n',
+            '왜 css는 가끔 튀는거지??',
             _jsx(_components.br, {}),
-            "\n",
-            "나쁘진 않는데 왜 css 가 가끔 튀는거지?? 흠aa애매한데",
+            '\n',
+            '나쁘진 않는데 왜 css 가 가끔 튀는거지?? 흠aa애매한데',
             _jsx(_components.br, {}),
-            "\n",
-            "왜일까",
+            '\n',
+            '왜일까',
           ],
         }),
-        "\n",
+        '\n',
         _jsxs(_components.p, {
           children: [
-            _jsx("span", {
+            _jsx('span', {
               style: {
-                backgroundColor: "red",
+                backgroundColor: 'red',
               },
-              children: "test ",
+              children: 'test ',
             }),
-            " css도 잘먹네 후 그러면 이제",
+            ' css도 잘먹네 후 그러면 이제',
             _jsx(_components.br, {}),
-            "\n",
-            "남은게 뭐가 남았지??",
+            '\n',
+            '남은게 뭐가 남았지??',
           ],
         }),
-        "\n",
+        '\n',
         _jsx(_components.p, {
-          children: "좀 느린데 왜 이러지??실시간 반응성은 좀 구리네 흠",
+          children: '좀 느린데 왜 이러지??실시간 반응성은 좀 구리네 흠',
         }),
-        "\n",
+        '\n',
         _jsx(_components.p, {
-          children: "아니왜 이럼?",
+          children: '아니왜 이럼?',
         }),
       ],
     });
@@ -79,19 +79,19 @@ function MDXContent(props = {}) {
 }
 
 export default function Home(props) {
-  const tmp = props.url.href.split("/");
+  const tmp = props.url.href.split('/');
   console.log(tmp[tmp.length - 1]);
 
   return (
     <div>
       <Head>
         <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css"
+          rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css'
         />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js">
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'>
         </script>
-        <link rel="stylesheet" href="/post.css"></link>
+        <link rel='stylesheet' href='/post.css'></link>
         <script>hljs.initHighlightingOnLoad();</script>
       </Head>
       <Page>
