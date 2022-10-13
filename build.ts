@@ -2,6 +2,8 @@ import { pageGen } from '@/pagegen.tsx';
 import { compile } from 'mdx2';
 
 import { encode } from 'base64';
+import rehypeHighlight from 'https://esm.sh/rehype-highlight@6.0.0';
+import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@4?bundle';
 
 import { ensureDir, ensureFile } from 'https://deno.land/std@0.147.0/fs/mod.ts';
 import gfm from 'https://esm.sh/remark-gfm@3.0.1';
@@ -61,8 +63,6 @@ const hardEnter = (rawTexts: string[]) => {
     })
     .join('\n');
 };
-
-const mdxParsingForCodeBlock = () => {};
 
 //mdx파일을 읽어서
 
@@ -152,7 +152,8 @@ export const buildMdx = async () => {
 
         const compiled = await compile(enterBody, {
           jsxImportSource: 'preact',
-          remarkPlugins: [gfm],
+          remarkPlugins: [gfm, remarkFrontmatter],
+          rehypePlugins: [rehypeHighlight],
         });
 
         const page = pageGen(
